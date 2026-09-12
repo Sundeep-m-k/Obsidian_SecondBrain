@@ -24,10 +24,10 @@ tags: [category/ml-dl, index, moc]
 | [[Unsupervised Learning Index\|10. Unsupervised Learning]] | Clustering, dimensionality reduction, anomaly detection | ✅ Built |
 | [[Recommender Systems Index\|11. Recommender Systems]] | Collaborative and content-based filtering | ✅ Built |
 | [[Reinforcement Learning Index\|12. Reinforcement Learning]] | Agent/environment/reward/policy | ✅ Built (thin — low priority for target roles) |
-| [[Classical ML Algorithms Index\|13. Classical ML Algorithms]] | Trees, ensembles; SVM/Naive Bayes/KNN planned | 🟡 Partially built |
+| [[Classical ML Algorithms Index\|13. Classical ML Algorithms]] | Trees, ensembles, SVM, Naive Bayes, KNN | ✅ Built |
 | [[Model Evaluation Index\|14. Model Evaluation]] | Metrics, ROC/PR, calibration, CV, train/val/test, class imbalance | ✅ Built |
-| 15. Hyperparameter Tuning & Model Selection | Grid/Random/Bayesian search | ⬜ Not started |
-| 16. Model Interpretability | Feature importance, SHAP, LIME | ⬜ Not started |
+| [[Hyperparameter Tuning and Model Selection Index\|15. Hyperparameter Tuning & Model Selection]] | Grid/Random/Bayesian search, nested CV | ✅ Built |
+| [[Model Interpretability Index\|16. Model Interpretability]] | Feature importance, SHAP, LIME | ✅ Built |
 | [[Production ML and MLOps Index\|17. Production ML & MLOps]] | Drift, monitoring, versioning, deployment, retraining | ✅ Built |
 | [[Sequence Models Index\|18. Deep Learning]] | Neural net foundations, sequence models, attention/Transformers, training deep networks | 🟡 Partially built (Sequence Models relocated here from NLP) |
 | 19. Applied AI & LLM Systems | LLM fundamentals, RAG, agents, production AI | ⬜ Not started |

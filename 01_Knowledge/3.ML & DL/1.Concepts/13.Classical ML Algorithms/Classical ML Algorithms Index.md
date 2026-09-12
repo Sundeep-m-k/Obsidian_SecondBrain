@@ -23,18 +23,20 @@ tags: [category/ml-dl, index, moc]
 | [[Gradient Boosting Libraries (XGBoost & LightGBM)]] | The production implementations |
 | [[HistGradientBoostingClassifier]] | sklearn's histogram-based gradient boosting |
 
-**Distance/probability-based (⬜ not yet built — high interview frequency, planned next):**
+**Distance/probability/margin-based (built 2026-09):**
 
-- Support Vector Machines
-- Naive Bayes
-- K-Nearest Neighbors (as a classifier — [[K Means]] under Unsupervised Learning is a different algorithm despite the similar name)
+| Note | Covers |
+|---|---|
+| [[Support Vector Machines]] | Maximum-margin classification, soft margin, the kernel trick |
+| [[Naive Bayes]] | Bayes' theorem with a feature-independence assumption; strong text-classification baseline |
+| [[K-Nearest Neighbors]] | Lazy, instance-based classification by majority vote among nearest points — not [[K Means]] despite the similar name |
 
 ## Connections
 
-- Model Interpretability (module 16, not yet built) — feature importance is native to tree-based models
+- [[Model Interpretability Index]] — feature importance is native to tree-based models
 - [[Feature Scaling]] — required for SVM/KNN, irrelevant for trees/ensembles
 - [[Bias Variance Tradeoff]] — bagging reduces variance, boosting reduces bias
 
 ## One-line Summary
 
-> Trees split feature space directly and ensembles combine many of them (bagging for variance, boosting for bias) — the planned SVM/Naive Bayes/KNN additions cover the other classical paradigms (margin-based, probabilistic, instance-based) an interview expects alongside them.
+> Trees split feature space directly and ensembles combine many of them (bagging for variance, boosting for bias); SVM, Naive Bayes, and KNN round out the other classical paradigms (margin-based, probabilistic, instance-based) an interview expects alongside them.
