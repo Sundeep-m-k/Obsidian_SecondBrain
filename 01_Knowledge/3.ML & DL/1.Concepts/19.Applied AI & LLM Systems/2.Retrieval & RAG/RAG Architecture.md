@@ -12,13 +12,15 @@
 1. User query arrives
 2. Chunking (offline, done ahead of time) — the document corpus was already
    split into chunks and embedded ([[Chunking Strategies]])
-3. Retrieval — find candidate chunks relevant to the query
+3. Query processing / rewriting (optional but often necessary for short,
+   vague, or conversational queries — [[Query Rewriting]])
+4. Retrieval — find candidate chunks relevant to the (rewritten) query
    ([[Dense vs Sparse Retrieval]], [[Vector Search and Databases]])
-4. Reranking (optional but common) — re-score candidates for precision
+5. Reranking (optional but common) — re-score candidates for precision
    ([[Reranking and Hybrid Search]])
-5. Prompt construction — insert the top-scoring chunks into the LLM's
+6. Prompt construction — insert the top-scoring chunks into the LLM's
    context alongside the query and instructions
-6. Generation — the LLM produces an answer grounded in the retrieved content
+7. Generation — the LLM produces an answer grounded in the retrieved content
 ```
 
 ## Why RAG Instead of Just Fine-Tuning or a Bigger Context Window
@@ -53,7 +55,7 @@ An LLM asked a factual question with no supporting context must rely entirely on
 
 ## Connections
 
-- [[Chunking Strategies]], [[Dense vs Sparse Retrieval]], [[Vector Search and Databases]], [[Reranking and Hybrid Search]] — the pipeline stages this note ties together
+- [[Chunking Strategies]], [[Query Rewriting]], [[Dense vs Sparse Retrieval]], [[Vector Search and Databases]], [[Reranking and Hybrid Search]] — the pipeline stages this note ties together
 - [[Transfer Learning and Fine-Tuning]] — the alternative knowledge-injection approach RAG is usually compared against
 - [[Hallucination Mitigation]] — RAG is one mitigation among several, not a complete fix
 - [[RAG Evaluation]] — how to actually measure whether a RAG system is working

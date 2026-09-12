@@ -14,15 +14,9 @@ The **context window** is the maximum number of tokens (input + generated output
 
 **Practical consequence**: a long conversation, a large document, or a big set of retrieved chunks (see [[RAG Architecture]]) can silently exceed the context window, causing older content to be truncated or the call to fail outright — a common, easy-to-miss production bug. Cost also scales with tokens processed, so a larger context window isn't free even when it fits — every extra token in the prompt is billed and adds latency.
 
-## Sampling Parameters: Temperature and Top-p
+## Sampling Parameters
 
-An LLM's raw output at each step is a probability distribution over the vocabulary (via [[Activation Functions|softmax]] over the final layer's logits). How that distribution gets turned into an actual chosen token is controlled by sampling parameters:
-
-**Temperature** ($T$) rescales the logits before softmax: $\text{softmax}(z/T)$. $T<1$ sharpens the distribution (more confident, more deterministic, more repetitive); $T>1$ flattens it (more random, more diverse, more likely to produce nonsense). $T=0$ (or greedy decoding) always picks the single highest-probability token — fully deterministic, useful when reproducibility matters more than creativity.
-
-**Top-p (nucleus sampling)** samples only from the smallest set of tokens whose cumulative probability exceeds $p$ (e.g. $p=0.9$), discarding the unlikely long tail entirely before sampling. Unlike temperature, top-p adapts to how peaked or flat the underlying distribution already is — when the model is very confident, the nucleus is small regardless of $p$; when it's uncertain, the nucleus widens automatically.
-
-**Practical guidance**: low temperature (or greedy decoding) for tasks needing consistency and correctness (code generation, structured extraction, factual Q&A); higher temperature for tasks wanting variety (creative writing, brainstorming). The two parameters are often combined, not used as alternatives.
+An LLM's raw output at each step is a probability distribution over the vocabulary (via [[Activation Functions|softmax]] over the final layer's logits). How that distribution gets turned into an actual chosen token — greedy decoding, temperature, top-k, top-p, and how they interact — is covered in full, with a worked numerical example, in [[Sampling and Decoding Strategies]]. Short version: low temperature (or greedy) for tasks needing consistency (code generation, structured extraction); higher temperature with top-p for tasks wanting variety (creative writing, brainstorming).
 
 ---
 
@@ -53,6 +47,8 @@ Rather than only producing text, a modern LLM can be given a set of available **
 ## Connections
 
 - [[Transformer Architecture]], [[Attention Mechanism]] — the architecture underlying every LLM discussed here
+- [[Transformer End-to-End Walkthrough]] — a worked numerical example spanning tokenization through sampling
+- [[Sampling and Decoding Strategies]] — full treatment of temperature/top-k/top-p, with a worked example and their interactions
 - [[Tokenization — BPE]], [[WordPiece and Unigram LM]] — canonical tokenization coverage, linked not duplicated
 - [[AI Agents Fundamentals]] — built directly on tool/function calling
 - [[RAG Architecture]] — context window limits are a central practical constraint on how much retrieved content can be included
