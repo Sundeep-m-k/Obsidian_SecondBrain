@@ -23,7 +23,7 @@ tags: [category/ml-dl, topic/deep-learning, index, moc]
 
 Neural Network Foundations → (Sequence Models *or* CNNs, either order — both build on Foundations independently) → Attention & Transformers (assumes Sequence Models' seq2seq bottleneck as motivation) → Training Deep Networks → Applied Deep Learning
 
-**Fastest path to "understand a modern LLM"**: Neural Network Foundations (just Perceptron → MLP → Activation Functions → Backpropagation) → Sequence Models' [[Sequence-to-Sequence Models]] (for the bottleneck problem) → Attention & Transformers in full → Applied Deep Learning's [[Transfer Learning and Fine-Tuning]] → Applied AI & LLM Systems (module 19)
+**Fastest path to "understand a modern LLM"**: Neural Network Foundations (just Perceptron → MLP → Activation Functions → Backpropagation) → Sequence Models' [[Sequence-to-Sequence Models]] (for the bottleneck problem) → Attention & Transformers in full → Applied Deep Learning's [[Transfer Learning and Fine-Tuning]] → [[Applied AI and LLM Systems Index]] (module 19)
 
 ## Why This Structure
 
@@ -36,7 +36,7 @@ Modules 1–9 of `3.ML & DL` build the classical foundation (linear models, grad
 | Gradient descent for a neural network | [[Gradient Descent]] — same algorithm, different (much larger) parameter space |
 | Overfitting in deep networks | [[Overfitting]], [[Regularization]] — dropout and weight decay are DL's versions of the same idea |
 | Tokenization, embeddings feeding into sequence/attention models | [[NLP Index]] — canonical home, linked not duplicated |
-| LLM-scale application of Transformers | Applied AI & LLM Systems (module 19) |
+| LLM-scale application of Transformers | [[Applied AI and LLM Systems Index]] (module 19) |
 
 ## Common Exam / Interview Questions
 

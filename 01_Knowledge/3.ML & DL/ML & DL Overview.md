@@ -30,7 +30,7 @@ tags: [category/ml-dl, index, moc]
 | [[Model Interpretability Index\|16. Model Interpretability]] | Feature importance, SHAP, LIME | ✅ Built |
 | [[Production ML and MLOps Index\|17. Production ML & MLOps]] | Drift, monitoring, versioning, deployment, retraining | ✅ Built |
 | [[Deep Learning Index\|18. Deep Learning]] | Neural net foundations, sequence models, CNNs, attention/Transformers, training deep networks, applied DL | ✅ Built |
-| 19. Applied AI & LLM Systems | LLM fundamentals, RAG, agents, production AI | ⬜ Not started |
+| [[Applied AI and LLM Systems Index\|19. Applied AI & LLM Systems]] | LLM fundamentals, RAG, agents, production AI | ✅ Built |
 | 20. Data Science, Analytics & Product Thinking | A/B testing, time series, case thinking | ⬜ Not started |
 | [[ML Cheatsheet\|21. Meta & Interview Revision]] | Cross-module cheatsheet, common mistakes, role-based interview maps | 🟡 Needs re-scoping to cover modules 13–20 |
 
