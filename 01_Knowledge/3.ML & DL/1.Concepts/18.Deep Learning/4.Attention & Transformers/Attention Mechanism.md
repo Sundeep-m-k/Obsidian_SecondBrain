@@ -57,6 +57,7 @@ A seq2seq encoder-decoder without attention compresses an entire input sentence 
 - [[Sequence-to-Sequence Models]] — the bottleneck problem attention was invented to solve
 - [[Vanishing and Exploding Gradients in RNNs]] — the long-range-dependency problem self-attention sidesteps entirely
 - [[Transformer Architecture]] — the architecture built entirely around self-attention, with no recurrence at all
+- [[Transformer End-to-End Walkthrough]] — a worked numerical example threading this mechanism through a full input-to-output pipeline
 - [[Recurrent Neural Network (RNN)]] — the architecture attention (and eventually the Transformer) replaced
 
 ## One-line Summary

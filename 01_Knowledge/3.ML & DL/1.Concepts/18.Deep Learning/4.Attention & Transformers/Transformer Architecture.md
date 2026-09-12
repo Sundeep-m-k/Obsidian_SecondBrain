@@ -53,6 +53,7 @@ $$\text{output} = \text{LayerNorm}(x + \text{Sublayer}(x))$$
 ## Connections
 
 - [[Attention Mechanism]] — the core mechanism this architecture is built entirely around
+- [[Transformer End-to-End Walkthrough]] — a worked numerical example connecting this architecture to tokenization, sampling, and generation as one pipeline
 - [[Sequence-to-Sequence Models]] — the encoder-decoder framing this architecture generalizes and replaces the recurrence in
 - [[Batch and Layer Normalization]] — LayerNorm is used throughout, for the reasons covered there
 - [[BERT Embeddings]] (NLP) — a concrete encoder-only Transformer application

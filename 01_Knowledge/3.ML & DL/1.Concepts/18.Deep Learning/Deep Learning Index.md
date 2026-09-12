@@ -15,7 +15,7 @@ tags: [category/ml-dl, topic/deep-learning, index, moc]
 | [[Perceptron\|1. Neural Network Foundations]] | Perceptron, MLP, activation functions, computational graphs, forward/backpropagation, weight initialization |
 | [[Sequence Models Index\|2. Sequence Models]] | RNN, LSTM, GRU, seq2seq, vanishing/exploding gradients — relocated here from NLP (general architecture, not NLP-specific) |
 | [[CNN Fundamentals\|3. Convolutional Networks]] | Convolution, pooling, typical CNN architecture |
-| [[Attention Mechanism\|4. Attention & Transformers]] | Self-attention, multi-head attention, the full Transformer architecture |
+| [[Attention Mechanism\|4. Attention & Transformers]] | Self-attention, multi-head attention, the full Transformer architecture — plus [[Transformer End-to-End Walkthrough]], a worked numerical example for "explain a Transformer from scratch" |
 | [[Batch and Layer Normalization\|5. Training Deep Networks]] | BatchNorm/LayerNorm, dropout, optimizers (Adam etc.), learning rate scheduling |
 | [[Transfer Learning and Fine-Tuning\|6. Applied Deep Learning]] | Transfer learning/fine-tuning, training loops/PyTorch, inference vs. training |
 
