@@ -59,7 +59,7 @@ Both produce local, per-prediction explanations, but SHAP is grounded in a game-
 - [[Feature Importance]] — the global counterpart this note complements
 - [[LIME]] — the faster, less theoretically grounded alternative for local explanations
 - [[Random Forest]], [[Gradient Boosting]] — where TreeSHAP makes exact computation fast
-- [[Model Interpretability]] (index) — where this sits in the broader interpretability toolkit
+- [[Model Interpretability Index]] — where this sits in the broader interpretability toolkit
 
 ## One-line Summary
 

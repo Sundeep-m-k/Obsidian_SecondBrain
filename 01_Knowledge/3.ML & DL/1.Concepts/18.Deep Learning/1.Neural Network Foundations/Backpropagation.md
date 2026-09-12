@@ -36,7 +36,7 @@ This entire procedure is a special case of reverse-mode autodiff applied to the 
 
 ## Why It Can Fail: Vanishing and Exploding Gradients
 
-Each layer's $\delta^{(l)}$ is multiplied by that layer's activation derivative $\sigma'(z^{(l)})$ and weight matrix as it propagates backward. Across many layers, this is a repeated product — if the typical factor is less than 1 (e.g. sigmoid's derivative, which maxes at $0.25$), the gradient shrinks exponentially with depth (**vanishing**); if greater than 1, it grows exponentially (**exploding**). This is the exact same mechanism covered for RNNs in [[Vanishing and Exploding Gradients in RNNs]] — RNNs just make it especially visible because "depth" there means "number of time steps," which can be very large. [[Activation Functions|ReLU]], careful [[Weight Initialization]], and [[Batch Normalization]] all exist specifically to keep this product well-behaved.
+Each layer's $\delta^{(l)}$ is multiplied by that layer's activation derivative $\sigma'(z^{(l)})$ and weight matrix as it propagates backward. Across many layers, this is a repeated product — if the typical factor is less than 1 (e.g. sigmoid's derivative, which maxes at $0.25$), the gradient shrinks exponentially with depth (**vanishing**); if greater than 1, it grows exponentially (**exploding**). This is the exact same mechanism covered for RNNs in [[Vanishing and Exploding Gradients in RNNs]] — RNNs just make it especially visible because "depth" there means "number of time steps," which can be very large. [[Activation Functions|ReLU]], careful [[Weight Initialization]], and [[Batch and Layer Normalization]] all exist specifically to keep this product well-behaved.
 
 ---
 
@@ -53,7 +53,7 @@ Each layer's $\delta^{(l)}$ is multiplied by that layer's activation derivative 
 - [[Computational Graphs]], [[Forward Propagation]] — the structure and forward pass backprop reverses
 - [[Gradient Descent]] — what the resulting gradients are used for
 - [[Vanishing and Exploding Gradients in RNNs]] — the same failure mode, most visible in recurrent networks but present in any deep network
-- [[Weight Initialization]], [[Batch Normalization]] — the standard fixes
+- [[Weight Initialization]], [[Batch and Layer Normalization]] — the standard fixes
 
 ## One-line Summary
 

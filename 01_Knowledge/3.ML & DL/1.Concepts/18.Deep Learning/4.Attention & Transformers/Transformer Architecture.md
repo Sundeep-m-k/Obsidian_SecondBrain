@@ -2,7 +2,7 @@
 
 ## What is it?
 
-The **Transformer** is a sequence-processing architecture built entirely out of [[Attention Mechanism|self-attention]] and feedforward layers — with **no recurrence at all**. This is the architecture underlying essentially every modern LLM (GPT, BERT, and everything descended from them), and understanding its handful of building blocks is the foundation for understanding LLM internals in [[Applied AI & LLM Systems Index|Applied AI & LLM Systems]].
+The **Transformer** is a sequence-processing architecture built entirely out of [[Attention Mechanism|self-attention]] and feedforward layers — with **no recurrence at all**. This is the architecture underlying essentially every modern LLM (GPT, BERT, and everything descended from them), and understanding its handful of building blocks is the foundation for understanding LLM internals in [[Applied AI and LLM Systems Index|Applied AI & LLM Systems]].
 
 ---
 

@@ -62,7 +62,7 @@ exp = explainer.explain_instance(X_val.iloc[0].values, model.predict_proba, num_
 
 - [[SHAP]] — the more theoretically grounded alternative for local explanations
 - [[Feature Importance]] — the global counterpart; never substitute one LIME explanation for this
-- [[Model Interpretability]] (index) — where this fits in the broader toolkit
+- [[Model Interpretability Index]] — where this fits in the broader toolkit
 
 ## One-line Summary
 

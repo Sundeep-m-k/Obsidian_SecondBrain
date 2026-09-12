@@ -22,7 +22,7 @@ An MLP with a single hidden layer, given enough hidden units, can approximate an
 
 ## Architecture Choices
 
-**Depth vs. width**: a deeper network can represent hierarchical structure (each layer building on features from the last) more efficiently than a wider, shallower one, but is harder to train (see [[Vanishing and Exploding Gradients in RNNs]] — the same gradient-through-many-layers problem that plagues RNNs plagues very deep MLPs too, addressed by the techniques in [[Training Deep Networks]]).
+**Depth vs. width**: a deeper network can represent hierarchical structure (each layer building on features from the last) more efficiently than a wider, shallower one, but is harder to train (see [[Vanishing and Exploding Gradients in RNNs]] — the same gradient-through-many-layers problem that plagues RNNs plagues very deep MLPs too, addressed by the techniques in `5.Training Deep Networks`, e.g. [[Batch and Layer Normalization]]).
 
 **Hidden layer size**: too few units underfits (not enough capacity to represent the pattern — see [[Underfitting]]); too many risks overfitting without [[Regularization]] and increases compute cost for often-marginal gains.
 
@@ -50,7 +50,7 @@ An MLP is trained exactly like every other model in this vault — define a loss
 - [[Activation Functions]] — the non-linearity that makes stacking meaningful
 - [[Backpropagation]], [[Computational Graphs]] — how the gradient is actually computed through the stack
 - [[Bias Variance Tradeoff]] — hidden layer width/depth is this network's primary complexity knob
-- [[Training Deep Networks]] (module) — the techniques that make training a deep MLP actually work in practice
+- [[Batch and Layer Normalization|Training Deep Networks]] (module) — the techniques that make training a deep MLP actually work in practice
 
 ## One-line Summary
 

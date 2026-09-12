@@ -55,7 +55,7 @@ Everything above is **global** — one importance score per feature, describing 
 - [[SHAP]], [[LIME]] — the local-interpretability counterparts to this global view
 - [[Random Forest]], [[Gradient Boosting]] — where impurity-based importance is a free training byproduct
 - [[Feature Scaling]] — required before linear-coefficient importance means anything
-- [[Feature Selection]] — a direct downstream use of importance scores
+- Feature Selection (a direct downstream use of importance scores — no dedicated note yet in this vault)
 
 ## One-line Summary
 

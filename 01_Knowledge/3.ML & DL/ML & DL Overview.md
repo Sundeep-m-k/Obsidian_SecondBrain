@@ -32,7 +32,7 @@ tags: [category/ml-dl, index, moc]
 | [[Deep Learning Index\|18. Deep Learning]] | Neural net foundations, sequence models, CNNs, attention/Transformers, training deep networks, applied DL | ✅ Built |
 | [[Applied AI and LLM Systems Index\|19. Applied AI & LLM Systems]] | LLM fundamentals, RAG, agents, production AI | ✅ Built |
 | [[Data Science Analytics and Product Thinking Index\|20. Data Science, Analytics & Product Thinking]] | Time series, case thinking/product sense (A/B testing & correlation-vs-causation link to Statistics) | ✅ Built |
-| [[ML Cheatsheet\|21. Meta & Interview Revision]] | Cross-module cheatsheet, common mistakes, role-based interview maps | 🟡 Needs re-scoping to cover modules 13–20 |
+| [[Meta and Interview Revision Index\|21. Meta & Interview Revision]] | Cross-module cheatsheet, common mistakes, decision guides, 5 role-based interview maps | ✅ Rebuilt to cover the whole subject |
 
 ## Why This Structure
 

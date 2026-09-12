@@ -51,7 +51,7 @@ nn.init.xavier_normal_(layer.weight)                        # Xavier/Glorot init
 
 - [[Backpropagation]] — poor initialization worsens vanishing/exploding gradients from the very first step
 - [[Activation Functions]] — the specific activation determines which initialization scheme is appropriate
-- [[Batch Normalization]] — a complementary technique that keeps activation variance stable *during* training, not just at initialization
+- [[Batch and Layer Normalization]] — a complementary technique that keeps activation variance stable *during* training, not just at initialization
 
 ## One-line Summary
 

@@ -130,12 +130,23 @@ Implicitly maps features to a high-dimensional space $\phi(x)$ without explicitl
 
 ---
 
+## Question Banks for Modules Added 2026-09
+
+This note's original Q&A covers modules 1–9 in depth (the questions above). Rather than duplicate them here, each newer module carries its own "Interview Questions" section directly in its notes and index — go to the source:
+
+- Classical algorithms (SVM/Naive Bayes/KNN/trees/ensembles): [[Classical ML Algorithms Index]], [[How to Choose a Classical ML Algorithm]]
+- Evaluation/interpretability/tuning: [[Model Evaluation Index]], [[Model Interpretability Index]], [[Hyperparameter Tuning and Model Selection Index]]
+- Deep Learning: [[Deep Learning Index]] and each subfolder's notes
+- Applied AI/LLM: [[Applied AI and LLM Systems Index]] and each subfolder's notes
+- DS/Analytics/Product: [[Data Science Analytics and Product Thinking Index]]
+
 ## Connections
 
 - All concepts in [[Foundations Index]], [[Supervised Learning Index]], [[Linear Regression Index]], [[Loss and Cost Index]], [[Optimization Index]], [[Model Behavior Index]], [[Regularization Index]]
+- [[Meta and Interview Revision Index]] — the module index this note belongs to
 
 ---
 
 ## One-line Summary
 
-> This note is a self-contained interview preparation reference — every important ML interview question answered with the correct formal answer, covering bias-variance, regularisation, gradient descent, evaluation, and beyond.
+> This note is a self-contained interview preparation reference for classical ML foundations (modules 1–9) — every important question answered with the correct formal answer; newer modules (13–20) carry their own interview-question sections directly in their notes rather than duplicating them here.

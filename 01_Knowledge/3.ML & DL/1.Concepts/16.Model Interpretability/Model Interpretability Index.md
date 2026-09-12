@@ -33,7 +33,7 @@ tags: [category/ml-dl, index, moc]
 
 - [[Random Forest]], [[Gradient Boosting]] — where TreeSHAP and impurity-based importance are cheap/free
 - [[Logistic Regression]] — where scaled coefficients are already a form of built-in interpretability
-- [[Case Thinking & Product Sense]] (module 20) — communicating a model's behavior to a non-technical stakeholder is as much a communication skill as a technical one
+- [[Metric Selection and Diagnosing Change]] (module 20) — communicating a model's behavior to a non-technical stakeholder is as much a communication skill as a technical one
 
 ## One-line Summary
 
