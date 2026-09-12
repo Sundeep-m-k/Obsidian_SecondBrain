@@ -72,7 +72,7 @@ Basic probability, normal distribution
 
 ## Related concepts
 
-[[P-Value]], [[Permutation Test]], [[Multiple Comparisons Problem]], [[Benjamini-Hochberg Procedure]]
+[[P-Value]], [[Permutation Test]], [[Multiple Comparisons Problem]], [[Benjamini-Hochberg Procedure]], [[A-B Testing]], [[Correlation vs Causation]]
 
 ## Tags
 
