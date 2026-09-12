@@ -29,7 +29,7 @@ tags: [category/ml-dl, index, moc]
 | [[Hyperparameter Tuning and Model Selection Index\|15. Hyperparameter Tuning & Model Selection]] | Grid/Random/Bayesian search, nested CV | ✅ Built |
 | [[Model Interpretability Index\|16. Model Interpretability]] | Feature importance, SHAP, LIME | ✅ Built |
 | [[Production ML and MLOps Index\|17. Production ML & MLOps]] | Drift, monitoring, versioning, deployment, retraining | ✅ Built |
-| [[Sequence Models Index\|18. Deep Learning]] | Neural net foundations, sequence models, attention/Transformers, training deep networks | 🟡 Partially built (Sequence Models relocated here from NLP) |
+| [[Deep Learning Index\|18. Deep Learning]] | Neural net foundations, sequence models, CNNs, attention/Transformers, training deep networks, applied DL | ✅ Built |
 | 19. Applied AI & LLM Systems | LLM fundamentals, RAG, agents, production AI | ⬜ Not started |
 | 20. Data Science, Analytics & Product Thinking | A/B testing, time series, case thinking | ⬜ Not started |
 | [[ML Cheatsheet\|21. Meta & Interview Revision]] | Cross-module cheatsheet, common mistakes, role-based interview maps | 🟡 Needs re-scoping to cover modules 13–20 |

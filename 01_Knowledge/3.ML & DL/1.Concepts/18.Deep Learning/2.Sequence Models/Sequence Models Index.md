@@ -55,5 +55,5 @@ Recurrent Neural Network (RNN) → Vanishing and Exploding Gradients in RNNs →
 
 ---
 
-*Next section: `18.Deep Learning/4.Attention & Transformers/` (not yet built) — the seq2seq bottleneck above is exactly what attention was invented to solve.*
+*Next section: [[Attention Mechanism]] and [[Transformer Architecture]] (`18.Deep Learning/4.Attention & Transformers/`) — the seq2seq bottleneck above is exactly what attention was invented to solve.*
 *Text-specific prerequisite: [[03_Text_to_Numbers/Index]] (NLP track) — general DL prerequisites: [[Gradient Descent]], [[Loss Function]]*
