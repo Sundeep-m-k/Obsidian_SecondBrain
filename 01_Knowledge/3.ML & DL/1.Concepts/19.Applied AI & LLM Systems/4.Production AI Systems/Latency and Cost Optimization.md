@@ -14,7 +14,7 @@ Every token in the prompt must be processed through every layer of the model (se
 
 **Prompt minimization** — remove unnecessary context (see [[RAG Architecture|context dilution]]), use concise instructions, and avoid re-sending large unchanging context on every call when a cheaper alternative (below) exists.
 
-**Prompt caching** — many LLM APIs let a long, unchanging prefix of the prompt (e.g. a system prompt, or a large retrieved document reused across many queries) be cached server-side, so subsequent calls reusing that prefix are billed and processed faster than reprocessing it from scratch every time. This is a direct, practical lever whenever an application repeatedly sends the same large context with only the final query changing.
+**Caching** — most LLM applications benefit from more than one kind of cache (prompt caching, semantic caching, and ordinary application caching are mechanically distinct, with different invalidation and risk profiles) — see [[Caching Strategies for LLM Systems]] for the full taxonomy and comparison. The quick version relevant here: prompt caching (reusing server-side computation for a repeated prompt prefix) is a direct, practical lever whenever an application repeatedly sends the same large context with only the final query changing.
 
 **Model selection** — smaller/cheaper models are faster and cheaper per token, and are often sufficient for simpler sub-tasks (classification, extraction, routing) — reserving the largest, most expensive model specifically for the sub-tasks that actually need its full capability, rather than routing everything through it by default.
 
@@ -36,7 +36,7 @@ LLM API providers impose rate limits (requests per minute, tokens per minute) to
 
 **Why do both cost and latency scale with the number of tokens processed, not just the complexity of the task?** Every input token is processed through the model's attention mechanism (cost growing with sequence length), and every output token requires a separate full forward pass since generation is autoregressive — so a longer prompt or longer requested output directly increases both compute cost and wall-clock time, independent of how conceptually simple or complex the actual task is.
 
-**What does prompt caching actually save, and when is it worth using?** It lets a long, unchanging prefix of the prompt be reprocessed faster (and billed differently) on subsequent calls that reuse it — worth using whenever an application repeatedly sends the same large context (a system prompt, a large retrieved document) with only a small trailing part of the prompt actually changing between calls.
+**What's the difference between prompt caching and semantic caching, and why does the distinction matter?** See [[Caching Strategies for LLM Systems]] for the full answer — briefly, prompt caching reuses computation for an exact-matching prompt prefix, while semantic caching reuses an entire response for a semantically *similar* (not identical) query, and conflating the two leads to wrong assumptions about invalidation, risk, and what's actually being saved.
 
 **Why does streaming improve user experience without reducing actual cost or total generation time?** Streaming returns tokens as they're generated rather than waiting for the full response, so the user perceives the response starting immediately — but the total compute needed to generate the full response, and its total cost, are unchanged; streaming only changes when the user sees the output, not how much work was done to produce it.
 
@@ -44,6 +44,7 @@ LLM API providers impose rate limits (requests per minute, tokens per minute) to
 
 ## Connections
 
+- [[Caching Strategies for LLM Systems]] — the full taxonomy of prompt/semantic/application/KV caching
 - [[LLM Inference Fundamentals]] — context window size is the direct driver of prompt-side cost/latency
 - [[Attention Mechanism]] — the quadratic-cost mechanism underlying why longer prompts cost more
 - [[Inference vs Training]] — batching's latency/throughput tradeoff, applied here to LLM serving specifically
