@@ -140,7 +140,7 @@ Its error rate is the **Bayes error** (irreducible error). No classifier can bea
 - [[Logistic Regression]] — the canonical probabilistic classifier
 - [[Loss Function]] — cross-entropy is the standard classification loss
 - [[Regression]] — the contrast: continuous outputs
-- [[Decision Tree]], [[Random Forest]], [[Gradient Boosting]], [[HistGradientBoostingClassifier]] — the tree-based family from the algorithm table above, with full split-mechanics and worked examples in `14.Tree-Based & Ensemble Methods`
+- [[Decision Tree]], [[Random Forest]], [[Gradient Boosting]], [[HistGradientBoostingClassifier]] — the tree-based family from the algorithm table above, with full split-mechanics and worked examples in `13.Classical ML Algorithms`
 - [[Calibration]], [[Brier Score]], [[Proper Scoring Rule]] — ROC-AUC and PR-AUC above measure ranking ability only; these measure whether $\hat p$ itself is trustworthy, a separate axis entirely
 
 ---

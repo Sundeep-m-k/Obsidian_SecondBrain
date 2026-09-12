@@ -130,7 +130,7 @@ A vocabulary-based model (e.g. word-level LM) fails on morphologically rich lang
 
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/1.Foundations/Features.md]] — morphemes as features for text classification
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Vocabulary Pruning]] — morphology explains why rare words are common
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Vocabulary Pruning]] — morphology explains why rare words are common
 - [[3.ML & DL/1.Concepts/8.Model Behavior/Generalization.md]] — models that understand morphology generalize better to unseen word forms
 
 ---

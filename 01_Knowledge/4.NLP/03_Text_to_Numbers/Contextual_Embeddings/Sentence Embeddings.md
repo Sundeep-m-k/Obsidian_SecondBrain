@@ -161,7 +161,7 @@ labels = kmeans.fit_predict(embeddings)
 | Cosine similarity threshold | [[3.ML & DL/1.Concepts/7.Logistic Regression/Thresholding.md]] — paraphrase detection via similarity threshold |
 | FAISS nearest neighbour | [[3.ML & DL/1.Concepts/10.Unsupervised Learning/Clustering.md]] — ANN search is a clustering/retrieval operation |
 | Clustering with K-Means on embeddings | [[3.ML & DL/1.Concepts/10.Unsupervised Learning/K Means.md]] — sentence embeddings enable semantic clustering |
-| Mean pooling | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — pooling collapses token matrix to single feature vector |
+| Mean pooling | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — pooling collapses token matrix to single feature vector |
 | Fine-tuning BERT for similarity | [[3.ML & DL/1.Concepts/5.Optimization/Gradient Descent.md]] — small LR update to adapt pre-trained representations |
 | Embedding quality vs speed tradeoff | [[3.ML & DL/1.Concepts/8.Model Behavior/Bias Variance Tradeoff.md]] — larger models give better embeddings at higher compute cost |
 

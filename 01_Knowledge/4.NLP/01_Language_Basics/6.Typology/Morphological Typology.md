@@ -225,7 +225,7 @@ Transfer is harder as typological distance increases. Key factors:
 
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/8.Model Behavior/Generalization.md]] — cross-lingual generalization
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — morphological features as inputs
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — morphological features as inputs
 - [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] — data quantity and typological complexity interact
 
 ---

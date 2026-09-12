@@ -140,8 +140,8 @@ Is it non-English? ──CJK──► Character segmentation + morphological ana
 | Preprocessing Concept | Links to ML Concept |
 |----------------------|-------------------|
 | Deduplication → reduces memorization | [[3.ML & DL/1.Concepts/8.Model Behavior/Overfitting.md]] |
-| Tokenization → vocabulary = feature space | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] |
-| Normalization → reduces vocabulary size | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Scaling.md]] |
+| Tokenization → vocabulary = feature space | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] |
+| Normalization → reduces vocabulary size | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Scaling.md]] |
 | BPE merge rules | [[3.ML & DL/1.Concepts/5.Optimization/Gradient Descent.md]] (via EM/counting) |
 | IOB tagging → classification target | [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] |
 | Annotation quality → training data | [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] |

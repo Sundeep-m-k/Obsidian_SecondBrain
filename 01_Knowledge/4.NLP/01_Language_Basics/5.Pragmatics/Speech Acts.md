@@ -131,7 +131,7 @@ The NLU component performs intent classification + slot filling — this is exac
 
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] — DA classification
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — context features for indirect speech act detection
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — context features for indirect speech act detection
 
 ---
 

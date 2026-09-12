@@ -1,7 +1,7 @@
 # NLP — Track Index
 
 tags: #nlp #index #moc
-links: [[00_Start_Here/README|Home]] [[01_Language_Basics/Index]] [[02_Text_Preparation/Index]] [[03_Text_to_Numbers/Index]] [[04_Sequence_Models/Index]]
+links: [[00_Start_Here/README|Home]] [[01_Language_Basics/Index]] [[02_Text_Preparation/Index]] [[03_Text_to_Numbers/Index]] [[Sequence Models Index]]
 
 ---
 
@@ -22,15 +22,17 @@ NLP sits at the intersection of linguistics and machine learning. The linguistic
 | [[01_Language_Basics/Index\|01 — Language Basics]]   | ✅ Built       | 25    | Phonology, morphology, syntax, semantics, pragmatics, typology                          |
 | [[02_Text_Preparation/Index\|02 — Text Preparation]] | ✅ Built       | 21    | Cleaning, normalization, tokenization, segmentation, annotation formats                 |
 | [[03_Text_to_Numbers/Index\|03 — Text to Numbers]]   | ✅ Built       | 15    | Sparse vectors, static & contextual embeddings, subword/char representations            |
-| [[04_Sequence_Models/Index\|04 — Sequence Models]]   | ✅ Built       | 5     | RNN, vanishing/exploding gradients, LSTM, GRU, seq2seq — see note on scope change below  |
-| 05 — Attention & Transformers                        | ⬜ Not started | —     | Self-attention, multi-head attention, the Transformer architecture, positional encoding |
+| ~~04 — Sequence Models~~ → [[Sequence Models Index\|moved]] | ✅ Built, relocated | 5 | RNN, vanishing/exploding gradients, LSTM, GRU, seq2seq — moved to `3.ML & DL/18.Deep Learning/2.Sequence Models/`, see note below |
+| 05 — Attention & Transformers                        | ⬜ Not started (canonical home moves too) | —     | Self-attention, multi-head attention, the Transformer architecture, positional encoding — being built under `3.ML & DL/18.Deep Learning/4.Attention & Transformers/`, not here; link to it rather than duplicating once built |
 | 06 — NLP Tasks                                       | ⬜ Not started | —     | NER, text classification, machine translation, summarization, question answering        |
 | 07 — Evaluation                                      | ⬜ Not started | —     | BLEU, ROUGE, perplexity, task-specific metrics                                          |
-| 08 — Modern LLMs                                     | ⬜ Not started | —     | Pretraining objectives, fine-tuning, prompting, RAG                                     |
+| 08 — Modern LLMs                                     | ⬜ Not started (canonical home moves too) | —     | Pretraining objectives, fine-tuning, prompting, RAG — being built under `3.ML & DL/19.Applied AI & LLM Systems/`, not here |
 
 ## A Scope Change Worth Documenting
 
-The original plan (visible in `03_Text_to_Numbers/Index.md`'s "next section" pointer) named module 04 "Learning Core: Probability, Classical ML, Neural Fundamentals." That module was never built — and shouldn't be, as originally scoped. Probability and classical ML are now covered in depth under [[6.Statistics & Experimental Design]] and [[5.Mathematics]], and general ML fundamentals live in `3.ML & DL`. Rebuilding them inside NLP would duplicate content that already exists and would need to be kept in sync forever. Module 04 is renamed **Sequence Models** and covers what's genuinely NLP/DL-specific and still missing: RNNs, LSTMs, GRUs, and sequence-to-sequence architectures — the actual gap, not general ML review.
+The original plan (visible in `03_Text_to_Numbers/Index.md`'s "next section" pointer) named module 04 "Learning Core: Probability, Classical ML, Neural Fundamentals." That module was never built — and shouldn't be, as originally scoped. Probability and classical ML are now covered in depth under [[6.Statistics & Experimental Design]] and [[5.Mathematics]], and general ML fundamentals live in `3.ML & DL`. Rebuilding them inside NLP would duplicate content that already exists and would need to be kept in sync forever. Module 04 was renamed **Sequence Models** and covers what's genuinely NLP/DL-specific: RNNs, LSTMs, GRUs, and sequence-to-sequence architectures.
+
+**2026-09 update**: those five Sequence Models notes have themselves moved to `3.ML & DL/18.Deep Learning/2.Sequence Models/`. RNN/LSTM/GRU/Seq2Seq/vanishing-exploding-gradients are architecture-general (used identically for time series, audio, etc.), not NLP-specific, so their canonical home is now the Deep Learning module — an AI/ML interview-prep pass looking for general DL architecture would never think to look under NLP for them. Their *application to text* is still what modules 02/03 above build toward; the architecture notes themselves just live one level up now. Same logic applies going forward: Attention/Transformers (05) and the LLM-era content (08) get built as general DL/Applied-AI content under `3.ML & DL`, with this track linking to them rather than re-deriving them for text specifically.
 
 If a note here needs a general concept (e.g. gradient descent, overfitting, cross-entropy), it links out to the existing note in `3.ML & DL` rather than re-teaching it locally.
 

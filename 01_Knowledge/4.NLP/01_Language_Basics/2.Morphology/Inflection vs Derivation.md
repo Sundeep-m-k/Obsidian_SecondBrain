@@ -143,7 +143,7 @@ Same surface suffix, different morphological status. Context and semantic interp
 
 **Why this matters for models:**
 
-1. **Sparsity reduction**: `walked`, `walks`, `walking` are all forms of `walk`. A bag-of-words model that doesn't lemmatize treats these as 4 different features. Lemmatization (or inflection-aware tokenization) reduces this sparsity — [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Scaling.md]]
+1. **Sparsity reduction**: `walked`, `walks`, `walking` are all forms of `walk`. A bag-of-words model that doesn't lemmatize treats these as 4 different features. Lemmatization (or inflection-aware tokenization) reduces this sparsity — [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Scaling.md]]
 
 2. **Subword tokenization**: BPE/WordPiece often correctly split inflectional suffixes (`walk` + `##ing`) but struggle with derivational ones that change the root (`destroy` + `##ction` vs `destruct` + `##ion`).
 

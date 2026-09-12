@@ -1,0 +1,99 @@
+# Deployment Strategies
+
+## What is it?
+
+**Deployment** moves model from development to production. Strategy determines risk, speed, rollback capability.
+
+**Strategies:** Blue-Green, Canary, Shadow, A/B testing.
+
+---
+
+## Strategies
+
+### 1. Blue-Green Deployment
+
+**Process:**
+- Blue: Current production model
+- Green: New model (deployed, not live)
+- Switch: Flip traffic from Blue to Green (instant, no gradual)
+- Rollback: Revert to Blue if issues
+
+**Pros:**
+- Instant rollback (switch back to Blue)
+- Simple to understand and operate
+
+**Cons:**
+- All or nothing (no gradual testing)
+- Requires double infrastructure (Blue + Green servers)
+
+### 2. Canary Deployment
+
+**Process:**
+- Deploy to 5% of users
+- Monitor metrics (accuracy, latency, errors)
+- If good: 10% → 25% → 100%
+- If bad: Rollback to baseline
+
+**Pros:**
+- Gradual, low-risk
+- Early detection of issues
+- Controlled rollout
+
+**Cons:**
+- Slower than blue-green
+- Complex routing logic needed
+
+### 3. Shadow Deployment
+
+**Process:**
+- Deploy new model "in shadow" (no real traffic)
+- Compare predictions vs. baseline
+- Log differences, latency, errors
+- Cheap confidence check before traffic
+
+**Pros:**
+- Zero production risk (no real users affected)
+- Detect issues before going live
+
+**Cons:**
+- Doesn't measure real business impact
+- Expensive (running 2 models)
+- Doesn't reflect latency under load
+
+### 4. A/B Testing
+
+Route 50% users to new model, measure business metrics. See [[Online vs Offline Evaluation]].
+
+---
+
+## Workflow
+
+```
+Offline validation (test on historical data)
+        ↓
+Shadow test (no real users)
+        ↓
+Canary (5% users, monitor)
+        ↓
+Gradual rollout (10% → 25% → 100%)
+        ↓
+Full production
+        ↓
+Monitor for drift, issues
+        ↓
+(If drift detected: Retrain, test, deploy new version)
+```
+
+---
+
+## Interview Questions
+
+**Q: You have a new model. How do you safely deploy it to production?**
+
+Strategy: (1) Shadow test (run alongside baseline, no real traffic; detect bugs/latency issues). (2) Canary (5% of users; monitor metrics). (3) Gradual rollout (10% → 25% → 100% if no issues). (4) A/B test (if business metrics critical). Full rollout without gradual is risky; canary catches issues early. Rollback easily if needed. See [[Model Monitoring in Production]].
+
+---
+
+## One-line Summary
+
+> Deploy safely via blue-green (instant rollback), canary (gradual, 5%→25%→100%), shadow (no-risk testing), or A/B testing (measure business impact); combine strategies for confidence.

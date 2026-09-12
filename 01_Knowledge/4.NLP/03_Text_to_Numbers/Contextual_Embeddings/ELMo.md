@@ -132,7 +132,7 @@ output = task_model(elmo_vector)
 |-------------|-------------|
 | Pre-training on language modelling | [[3.ML & DL/1.Concepts/1.Foundations/Unsupervised Learning.md]] — self-supervised training signal from raw text |
 | Transfer learning to downstream tasks | [[3.ML & DL/1.Concepts/1.Foundations/Generalization.md]] — representations learned on one task generalise to others |
-| Feature extraction (frozen ELMo) | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — ELMo as feature extractor, task model trained on top |
+| Feature extraction (frozen ELMo) | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — ELMo as feature extractor, task model trained on top |
 | Learned layer weights $s_j$ | [[3.ML & DL/1.Concepts/5.Optimization/Gradient Descent.md]] — $s_j$ and $\gamma$ learned via task-specific backprop |
 | Softmax over layer weights | [[3.ML & DL/1.Concepts/7.Logistic Regression/Sigmoid Function.md]] — softmax is multi-class generalisation of sigmoid |
 | biLSTM = Sequential model | [[Sequential Models]] — ELMo's backbone is a stacked bidirectional LSTM |

@@ -1,0 +1,372 @@
+# Outlier Detection and Treatment
+
+## What is it?
+
+**Outliers** are extreme values that deviate significantly from the rest of the data. They can be:
+- **Legitimate:** Naturally rare but real (e.g., billionaire in income data)
+- **Errors:** Measurement mistakes, data entry errors, sensor failures
+- **Artifacts:** Processing errors, merging mismatches
+
+Outliers severely distort models (especially MSE-based). Must detect and handle thoughtfully.
+
+---
+
+## Why Outliers Matter
+
+### Impact on Model Performance
+
+**Linear regression with MSE loss:**
+- Minimizes $\sum (y - \hat{y})^2$
+- Single outlier far from line can dominate loss
+- Model shifts weights to fit outlier instead of majority
+
+**Example:** Predicting house price
+```
+Data: [300K, 310K, 295K, 305K, 15M]  (last is outlier)
+
+Model fits average: ~310K
+Outlier pulls average up: ~350K
+Majority examples fit poorly
+
+RMSE: 40K due to outlier, even though model good on normal data
+```
+
+**Tree models:** Less sensitive (split thresholds don't change much)
+**Linear models:** Highly sensitive (coefficients distorted)
+
+---
+
+## Detection Methods
+
+### 1. Visual Inspection (Box Plot)
+
+**Method:** Plot data; outliers appear as isolated points beyond whiskers.
+
+```
+         *
+         *
+      |---|
+      | ■ |  ← Median
+      |---|
+         *
+```
+
+**Calculation (IQR method):**
+- Q1 = 25th percentile
+- Q3 = 75th percentile
+- IQR = Q3 - Q1
+- Lower bound = Q1 - 1.5 * IQR
+- Upper bound = Q3 + 1.5 * IQR
+- Outliers: Values outside [lower, upper]
+
+**Python:**
+```python
+Q1 = df['age'].quantile(0.25)
+Q3 = df['age'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+outliers = df[(df['age'] < lower_bound) | (df['age'] > upper_bound)]
+```
+
+**Pros:** Interpretable, robust to extreme values
+**Cons:** Assumes symmetric distribution; misses asymmetric outliers
+
+### 2. Z-Score
+
+**Method:** Flag values > 3 standard deviations from mean.
+
+$$z_i = \frac{x_i - \mu}{\sigma}$$
+
+Outlier if $|z_i| > 3$ (or 2.5 for stricter threshold).
+
+**Python:**
+```python
+from scipy import stats
+z_scores = np.abs(stats.zscore(df['age']))
+outliers = df[z_scores > 3]
+```
+
+**Pros:** Works for symmetric distributions
+**Cons:** Sensitive to mean/std (outliers themselves distort these); assumes normality
+
+**Critical issue:** If data has outliers, mean and std are biased! Z-score becomes unreliable.
+
+### 3. Isolation Forest
+
+**Method:** Unsupervised; isolates outliers in random trees.
+
+```python
+from sklearn.ensemble import IsolationForest
+
+iso_forest = IsolationForest(contamination=0.1)  # Assume 10% are outliers
+outlier_labels = iso_forest.fit_predict(df[['age', 'income']])
+# -1 = outlier, 1 = normal
+```
+
+**Pros:**
+- No assumptions about distribution
+- Handles multivariate outliers (outliers in feature space)
+- Robust (doesn't require mean/std)
+
+**Cons:**
+- Hyperparameter `contamination` must be set (what fraction are outliers?)
+- Less interpretable
+- Can miss subtle multivariate outliers
+
+### 4. Mahalanobis Distance
+
+**Method:** Distance in feature space accounting for correlations.
+
+```python
+from scipy.spatial.distance import mahalanobis
+
+mean = df[features].mean()
+cov = df[features].cov()
+distances = mahalanobis(df[features], mean, cov.inv())
+outliers = df[distances > threshold]
+```
+
+**Pros:**
+- Captures multivariate outliers (unusual combinations)
+- Account for correlations
+
+**Cons:**
+- Computationally expensive
+- Covariance matrix must be invertible
+- Sensitive to outliers themselves (circular problem)
+
+### 5. Domain Knowledge
+
+**Method:** Define outlier ranges based on domain logic.
+
+**Examples:**
+- Age > 120 or < 0 → impossible (measurement error)
+- Price < 0 → impossible (data entry)
+- Temperature 200°C in indoor room → sensor failure
+
+**Pros:**
+- Captures domain-specific impossibilities
+- Interpretable
+
+**Cons:**
+- Requires domain expertise
+- Tedious for many features
+
+---
+
+## Treatment Options
+
+### 1. Deletion
+
+**Method:** Remove rows with outliers.
+
+```python
+df_clean = df[(df['age'] >= lower_bound) & (df['age'] <= upper_bound)]
+```
+
+**Pros:**
+- Simple
+- No assumptions
+
+**Cons:**
+- Loss of data
+- Biased if outliers are real signal (e.g., rare but legitimate)
+
+**When to use:**
+- Outliers are errors (confirmed)
+- Small number of outliers (<1%)
+- Data is abundant
+
+**When NOT to use:**
+- Outliers are legitimate signal
+- Data is limited
+- Unknown if error or real
+
+### 2. Capping (Winsorization)
+
+**Method:** Replace outliers with boundary values.
+
+```python
+# Cap at quantiles
+df['age_capped'] = df['age'].clip(lower=lower_bound, upper=upper_bound)
+# Age > 100 → 100
+# Age < 0 → 0
+```
+
+**Pros:**
+- Keeps data (no deletion)
+- Preserves information (nearby to boundary)
+- Fast
+
+**Cons:**
+- Creates artificial clustering at boundaries
+- Reduces variance
+- Loses extreme value information
+
+**When to use:**
+- Outliers are errors but close to realistic range
+- Need to keep all data points
+- Distribution is roughly known
+
+**When NOT to use:**
+- Extreme outliers (cap too far from data)
+- Need accurate extremes (rare events modeling)
+
+### 3. Transformation
+
+**Method:** Apply mathematical transformation to compress range.
+
+```python
+# Log transformation
+df['log_income'] = np.log(df['income'])  # Compresses high values
+
+# Square root
+df['sqrt_expense'] = np.sqrt(df['expense'])
+
+# Box-Cox (optimal power transform)
+from scipy.stats import boxcox
+df['income_boxcox'], lambda_param = boxcox(df['income'])
+```
+
+**Pros:**
+- No data loss
+- Handles asymmetric distributions
+- Reduces skewness
+
+**Cons:**
+- Loses interpretability (log-income is hard to explain)
+- Doesn't work for negative values (log)
+- Model predictions in transformed space (must inverse-transform)
+
+**When to use:**
+- Right-skewed data (income, size, duration)
+- Outliers are real but skew distribution
+- Using linear models
+
+**When NOT to use:**
+- Interpretability is critical
+- Negative values (can't log)
+- Data already normalized
+
+### 4. Domain-Specific Imputation
+
+**Method:** Replace with realistic value based on domain.
+
+**Examples:**
+- Age > 120 → Use median age of similar demographic
+- Price < 0 → Use median price of same category
+- Missing > 50% for a row → Delete row
+
+**Pros:**
+- Realistic; preserves relationships
+- Incorporates domain knowledge
+
+**Cons:**
+- Requires domain expertise
+- Manual work
+- Potentially introduces bias
+
+**When to use:**
+- Domain experts available
+- Outliers are errors (known causes)
+- Few outliers to fix
+
+---
+
+## Impact on Different Models
+
+| Model | Sensitivity | Solution |
+|-------|-------------|----------|
+| Linear Regression (MSE) | High | Cap, transform, use robust loss (MAE, Huber) |
+| Logistic Regression | High | Cap, transform |
+| Decision Trees | Low | No treatment needed |
+| Random Forest | Low | No treatment needed |
+| SVM | Medium | Scaling helps; RBF kernel robust |
+| KNN | Medium | Scaling critical; outliers distort distances |
+| Neural Networks | High | Scaling + regularization |
+
+**Key insight:** Tree-based models are outlier-robust; linear models need preprocessing.
+
+---
+
+## Workflow: Detecting and Treating Outliers
+
+```
+Numerical feature
+        ↓
+Visualize distribution (histogram, box plot)
+        ↓
+Apply detection (IQR, Z-score, or domain knowledge)
+        ↓
+How many outliers?
+        ├─ <1% (few)
+        │  └─ Are they errors?
+        │     ├─ Yes → Delete or cap
+        │     └─ No (real signal) → Keep or cap
+        │
+        └─ >1% (many)
+           └─ Are they legitimate variation?
+              ├─ Yes → Transform (log, sqrt, Box-Cox)
+              └─ No (systematic errors) → Investigate + fix
+```
+
+---
+
+## Common Pitfalls
+
+| Pitfall | Problem | Fix |
+|---------|---------|-----|
+| Use Z-score with outliers present | Mean/std biased by outliers; unreliable | Use IQR (robust) or Isolation Forest |
+| Delete all outliers without investigating | May lose real signal; introduce bias | Check if outliers are errors or signal |
+| Cap without domain knowledge | Artificial clustering at boundaries | Verify boundary values are reasonable |
+| Ignore outliers in linear models | Large errors, distorted parameters | Detect + treat before training |
+| Treat outliers before splitting | Leakage; test statistics influence preprocessing | Detect on train, apply to test |
+| Cap too aggressively | Lose information; introduce bias | Use domain-informed boundaries |
+
+---
+
+## Interview Questions
+
+**Q: What's the difference between IQR and Z-score for outlier detection?**
+
+**IQR (Interquartile Range):** Robust to outliers (uses percentiles). Outliers = values beyond Q1 - 1.5·IQR or Q3 + 1.5·IQR. Works for any distribution shape. **Z-score:** Assumes normality; flags values > 3 std devs from mean. Sensitive to mean/std, which are biased if outliers exist (circular problem). For data with potential outliers, IQR is better (robust). Z-score better if data is confirmed normal. See [[Feature Scaling]].
+
+---
+
+**Q: You detect an outlier. Should you always delete it?**
+
+No. First determine: (1) **Is it an error?** Impossible value (age > 120, price < 0) → delete. (2) **Is it real signal?** Billionaire in income data → keep. (3) **How does it affect the model?** Linear regression sensitive; trees robust. (4) **How much data do you have?** Abundant → can delete; limited → keep. Generally: Delete errors, keep real signal. For linear models, cap outliers instead of deleting. See [[Common Mistakes in ML#5 - Ignoring Outliers]].
+
+---
+
+**Q: What is capping (Winsorization) and when would you use it?**
+
+Replacing outliers with boundary values. Example: Age > 100 → 100; Age < 0 → 0. Useful when: (1) Outliers are errors close to realistic range. (2) You want to keep all data. (3) Linear models (MSE-sensitive). Downside: Creates artificial clustering at boundaries; reduces variance; loses extreme information. Better for moderately skewed data. For severely skewed, use transformation (log). See [[Common Mistakes in ML#5 - Ignoring Outliers]].
+
+---
+
+**Q: How do you prevent data leakage when handling outliers?**
+
+Detect outliers on training data only, apply same treatment to val/test. Example: Compute IQR bounds on train set; use those bounds to cap val/test. Never compute bounds on full data before splitting. This prevents test set statistics from influencing training preprocessing. Python workflow: (1) Train: lower_bound = train['age'].quantile(0.25) - 1.5*IQR. (2) Test: Use train's bounds to cap test['age']. See [[Train Val Test Framework]].
+
+---
+
+**Q: Why are tree-based models robust to outliers while linear models aren't?**
+
+Trees use splitting thresholds, not distances to mean. An outlier doesn't distort a threshold; it just lands in a leaf. Example: Decision tree splits "age > 30" works same whether oldest person is 80 or 800. Linear regression minimizes MSE; outlier's large error dominates loss function, pulling slope/intercept toward outlier. Log regression similarly. Trees: Outlier affects only relevant leaf; others unchanged. Linear: Outlier affects all parameters. Solution: Trees need no outlier treatment; linear models need scaling/capping/transformation. See [[Classical ML Algorithms Index]].
+
+---
+
+## Connections
+
+- [[Common Mistakes in ML#5 - Ignoring Outliers]] — Pitfall reference
+- [[Feature Scaling]] — Related preprocessing
+- [[Preprocessing Pipelines]] — Outlier treatment in pipeline
+- [[Train Val Test Framework]] — Prevent leakage
+
+---
+
+## One-line Summary
+
+> Outliers are detected via IQR (robust), Z-score (assumes normality), or domain knowledge; treat via deletion (if errors + rare), capping (moderate outliers), transformation (skewed data), or keep (if real signal) — prevent leakage by detecting on train only, apply treatment to test.

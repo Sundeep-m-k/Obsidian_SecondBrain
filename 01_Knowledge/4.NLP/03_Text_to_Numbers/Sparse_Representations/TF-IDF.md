@@ -109,8 +109,8 @@ print(sorted(doc0_scores, key=lambda x: -x[1]))
 | TF-IDF Concept | ML/NLP Application |
 |---------------|-------------------|
 | TF-IDF vectors as features | Input to [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] — direct input to Naïve Bayes, SVM, Logistic Regression |
-| IDF = feature re-weighting | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Scaling.md]] — TF-IDF is a learned scaling of raw count features |
-| L2 normalisation | [[3.ML & DL/1.Concepts/6.Features and Representation/Normalization.md]] — required before cosine similarity |
+| IDF = feature re-weighting | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Scaling.md]] — TF-IDF is a learned scaling of raw count features |
+| L2 normalisation | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Normalization.md]] — required before cosine similarity |
 | BM25 TF saturation | [[3.ML & DL/1.Concepts/8.Model Behavior/Overfitting.md]] — prevents long docs from dominating via TF cap |
 | IDF as log-probability | [[3.ML & DL/1.Concepts/4.Loss and Cost/Loss Function.md]] — IDF is related to negative log probability of a term |
 

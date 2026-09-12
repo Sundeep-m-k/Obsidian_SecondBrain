@@ -52,7 +52,7 @@ SORT file.mtime DESC
 Things worth a direct link rather than a query — top-level maps of content for the deepest subjects.
 
 - [[01_Knowledge/4.NLP/NLP Index|NLP — full track index]]
-- [[01_Knowledge/3.ML & DL/1.Concepts/13.Meta Understanding/ML Cheatsheet|ML & DL — cheatsheet]]
+- [[01_Knowledge/3.ML & DL/1.Concepts/21.Meta & Interview Revision/ML Cheatsheet|ML & DL — cheatsheet]]
 - [[02_Projects/Drug-Pipeline-Advancement-Forecasting/MOC|Drug Pipeline Advancement Forecasting — project MOC]]
 
 ---

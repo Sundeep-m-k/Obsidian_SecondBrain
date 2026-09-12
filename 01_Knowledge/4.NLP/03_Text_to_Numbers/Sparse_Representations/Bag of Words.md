@@ -90,9 +90,9 @@ print(X.toarray())
 | BoW Concept | ML/NLP Application |
 |------------|-------------------|
 | Document-term matrix | Direct input to [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] (Naïve Bayes, SVM, Logistic Regression) |
-| Vocabulary = feature space | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — each vocab word is a feature |
+| Vocabulary = feature space | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — each vocab word is a feature |
 | Sparse high-dim vectors | [[3.ML & DL/1.Concepts/9.Regularization/Regularization.md]] — L1 regularization critical for sparse feature selection |
-| Count normalization | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Scaling.md]] — raw counts must be normalized |
+| Count normalization | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Scaling.md]] — raw counts must be normalized |
 | DTM as matrix | [[3.ML & DL/1.Concepts/10.Unsupervised Learning/PCA.md]] — PCA/SVD reduces DTM to dense embeddings (→ LSA) |
 
 **Downstream tasks where BoW is still competitive**:

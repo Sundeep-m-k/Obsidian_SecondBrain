@@ -208,7 +208,7 @@ def remove_control_chars(text):
 **SentencePiece**: also applies Unicode normalisation (configurable: NFC or NFKC) before learning the subword vocabulary. Consistent normalisation during training and inference is essential — a mismatch causes tokens to be split differently.
 
 **Cross-links:**
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Data Representation.md]] — encoding determines the atomic units of representation
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Data Representation.md]] — encoding determines the atomic units of representation
 - [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] — encoding bugs silently corrupt training data
 
 ---

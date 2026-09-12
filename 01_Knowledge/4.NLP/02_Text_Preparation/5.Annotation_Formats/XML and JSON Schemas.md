@@ -237,7 +237,7 @@ for token in tree.findall(".//token"):
 
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] — these formats are how training data is stored
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Data Representation.md]] — JSON/XML are the serialization layer
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Data Representation.md]] — JSON/XML are the serialization layer
 
 ---
 

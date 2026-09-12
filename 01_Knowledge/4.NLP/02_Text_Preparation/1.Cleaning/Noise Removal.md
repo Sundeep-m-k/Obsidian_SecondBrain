@@ -167,7 +167,7 @@ Tools: `jusText`, `trafilatura`, `newspaper3k` perform this automatically.
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] — data quality is the upstream constraint on all model performance
 - [[3.ML & DL/1.Concepts/8.Model Behavior/Overfitting.md]] — noisy training data causes models to memorise artefacts
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Data Representation.md]] — representation quality depends on clean input
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Data Representation.md]] — representation quality depends on clean input
 
 ---
 

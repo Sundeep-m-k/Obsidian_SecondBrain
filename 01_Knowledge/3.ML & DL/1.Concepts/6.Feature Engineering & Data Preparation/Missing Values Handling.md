@@ -1,0 +1,431 @@
+# Missing Values Handling
+
+## What is it?
+
+**Missing values** (NaN, null, NA) are data points that are absent or unknown. They occur due to:
+- Data entry errors
+- Sensor failures
+- Respondent non-response (surveys)
+- Merge mismatches (joining datasets)
+- Natural sparsity (not all features applicable to all examples)
+
+Handling missing values is a critical preprocessing step. Ignoring them causes errors; incorrectly handling them causes leakage or bias.
+
+---
+
+## Types of Missingness
+
+### 1. Missing Completely at Random (MCAR)
+
+Data is missing due to reasons completely unrelated to the data itself.
+
+**Example:** Survey respondent's internet connection dropped randomly.
+
+**Impact:** Low bias if you handle it correctly; random deletion is okay.
+
+**Statistical test:** Little's MCAR test checks if data is MCAR.
+
+### 2. Missing at Random (MAR)
+
+Data is missing related to *other* observed variables, but not the missing variable itself.
+
+**Example:** High-income people less likely to report income (related to income, but missingness caused by other factors like privacy concerns).
+
+**Impact:** Can introduce bias if you delete examples. Imputation needed.
+
+### 3. Missing Not at Random (MNAR)
+
+Data is missing related to the variable's own value.
+
+**Example:** Depressed patients don't report depression severity (high values more likely missing).
+
+**Impact:** Bias unavoidable; requires domain knowledge or sensitivity analysis.
+
+---
+
+## Detection and Diagnosis
+
+### 1. Visualizing Missingness
+
+```python
+# Python: Check missing percentages
+import pandas as pd
+
+df = pd.read_csv('data.csv')
+missing_pct = 100 * df.isnull().sum() / len(df)
+print(missing_pct.sort_values(ascending=False))
+
+# Output:
+# age            15.0%  ← High missingness
+# income         8.2%
+# phone          0.5%
+# zip_code       0.1%
+```
+
+**Decision rule:**
+- < 5% missing: Imputation acceptable; almost any method works
+- 5-20% missing: Imputation necessary; choose method carefully
+- > 20% missing: Feature questionable; consider dropping feature
+- > 50% missing: Drop feature (too sparse)
+
+### 2. Missingness Pattern
+
+```
+       Age  Income  Education
+Row 1   ✓     ✓       ✓
+Row 2   ✗     ✗       ✓     ← Age and Income both missing
+Row 3   ✓     ✗       ✓
+Row 4   ✗     ✓       ✗     ← Age and Education both missing
+```
+
+**Patterns reveal:**
+- Correlated missingness (Age and Income both missing?) → Suggests MCAR or MAR
+- Random missingness → True MCAR
+- Systematic patterns → MNAR (investigate why)
+
+### 3. Impact Assessment
+
+Before deciding action, assess impact:
+- Does model require complete data? (Most do)
+- How important is this feature? (Low importance → drop)
+- How much information is lost? (Too much → drop)
+
+---
+
+## Imputation Strategies
+
+### 1. Deletion (Listwise)
+
+**Method:** Remove rows with any missing values.
+
+```python
+df_complete = df.dropna()  # Remove all rows with any NaN
+```
+
+**Pros:**
+- Simple, unbiased (if MCAR)
+- No assumptions needed
+
+**Cons:**
+- Throws away data
+- Biased if MAR or MNAR
+- Inefficient for sparse data
+
+**When to use:**
+- Very small percentage missing (<1%)
+- MCAR confirmed
+- Data is abundant
+
+**When NOT to use:**
+- > 5% missing
+- Features are critical
+- Data is limited
+
+### 2. Mean/Median/Mode Imputation
+
+**Method:** Replace missing value with summary statistic.
+
+```python
+# Mean imputation
+df['age'].fillna(df['age'].mean(), inplace=True)
+
+# Median (better for outliers)
+df['age'].fillna(df['age'].median(), inplace=True)
+
+# Mode (categorical)
+df['category'].fillna(df['category'].mode()[0], inplace=True)
+```
+
+**Pros:**
+- Simple, fast
+- Preserves dataset size
+- Doesn't require assumptions
+
+**Cons:**
+- Reduces variance (artificially compresses distribution)
+- Ignores relationships with other variables
+- Can distort distributions (mean pulls toward center)
+
+**When to use:**
+- Quick baseline imputation
+- Feature has low importance
+- Missing completely at random (MCAR)
+
+**When NOT to use:**
+- Need to preserve variance
+- Feature is critical
+- Significant correlations with other variables
+
+### 3. Forward Fill / Backward Fill (Time-Series)
+
+**Method:** Carry last observed value forward (or backward).
+
+```python
+# Forward fill
+df['temperature'].fillna(method='ffill', inplace=True)
+# Row 1: 22.5
+# Row 2: NaN → 22.5 (from row 1)
+# Row 3: 23.1
+
+# Backward fill
+df['temperature'].fillna(method='bfill', inplace=True)
+```
+
+**Pros:**
+- Realistic for time-series (value changes slowly)
+- Preserves temporal structure
+
+**Cons:**
+- Biased if value changes rapidly
+- Only works for time-series
+- Can propagate errors if long sequences missing
+
+**When to use:**
+- Time-series data (sensors, stock prices)
+- Values change gradually
+- Short gaps (1-2 missing values)
+
+**When NOT to use:**
+- Cross-sectional data (no time order)
+- Long gaps
+- Values change rapidly
+
+### 4. K-Nearest Neighbors (KNN) Imputation
+
+**Method:** Replace missing value with weighted average of k nearest neighbors.
+
+```python
+from sklearn.impute import KNNImputer
+
+imputer = KNNImputer(n_neighbors=5)
+df_imputed = imputer.fit_transform(df)
+```
+
+**Pros:**
+- Uses relationships with other variables
+- Realistic values (from actual data neighbors)
+- No distributional assumptions
+
+**Cons:**
+- Computationally expensive
+- Sensitive to k choice
+- Fails when all neighbors also have missing values
+
+**When to use:**
+- Feature has important correlations
+- Missing pattern is MAR
+- Dataset is not too large
+- Enough complete neighbors available
+
+**When NOT to use:**
+- Very high-dimensional data (KNN degrades)
+- Sparse data (neighbors far apart)
+- Need speed (KNN is slow)
+
+### 5. Multiple Imputation by Chained Equations (MICE)
+
+**Method:** Iteratively model each feature with missing values as function of others.
+
+```python
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+
+imputer = IterativeImputer(max_iter=10)
+df_imputed = imputer.fit_transform(df)
+```
+
+**Pros:**
+- Sophisticated; models relationships
+- Preserves distribution properties
+- Handles MAR well
+
+**Cons:**
+- Complex; requires careful tuning
+- Slow on large datasets
+- Assumes imputation model is correct
+
+**When to use:**
+- Complex missing patterns
+- Need statistical validity
+- Data is not huge
+- Missing is MAR (not MNAR)
+
+**When NOT to use:**
+- Simple missing patterns (mean impute sufficient)
+- Need speed
+- Limited domain knowledge (hard to validate)
+
+### 6. Domain-Specific Imputation
+
+**Method:** Use domain knowledge to fill in plausible values.
+
+**Examples:**
+- Age = -1 for unknown (special marker)
+- Income = median of same demographic group
+- Zip code = mode of same city
+- Product rating = system average or user average
+
+**Pros:**
+- Often most realistic
+- Incorporates domain expertise
+- Can preserve important patterns
+
+**Cons:**
+- Requires domain knowledge
+- Manual work
+- Can introduce bias if not careful
+
+**When to use:**
+- Domain experts available
+- Feature is critical
+- Missing pattern is systematic (MNAR)
+
+**When NOT to use:**
+- No domain knowledge
+- Quick prototype needed
+- Hundreds of features
+
+---
+
+## Impact on Model Performance
+
+### What Happens When You Ignore Missing Values?
+
+| Action | Result |
+|--------|--------|
+| Skip handling | Most models crash (error) |
+| Silently assume 0 | Biased predictions (0 may be incorrect) |
+| Mean impute | Underestimates variance; weak feature importance |
+| Delete rows | Loss of data; bias if not MCAR |
+| Improper imputation | Leakage; unrealistic patterns |
+
+### Leakage Risk: The Critical Issue
+
+**WRONG:** Impute using entire dataset
+```python
+# ✗ WRONG
+df['age'].fillna(df['age'].mean(), inplace=True)  # Mean from ALL data
+X_train = df[:700]
+X_test = df[700:]
+# ← Test set statistics influenced train imputation
+```
+
+**CORRECT:** Impute separately
+```python
+# ✓ CORRECT
+X_train = df[:700]
+X_test = df[700:]
+train_mean = X_train['age'].mean()  # Mean from TRAIN only
+X_train['age'].fillna(train_mean, inplace=True)
+X_test['age'].fillna(train_mean, inplace=True)  # Use train's mean on test
+```
+
+See [[Train Val Test Framework]] for data leakage prevention.
+
+---
+
+## Workflow: Decision Tree
+
+```
+Missing value detected
+        ↓
+Is it MCAR? (Check pattern, run Little's test)
+        ↓
+    Yes → Random deletion acceptable (if <1%)
+    ↓
+    No (MAR or MNAR)
+        ↓
+How much is missing?
+        ↓
+    <5% → Mean/median imputation OK
+    5-20% → KNN or MICE; preserve variance
+    >20% → Consider dropping feature entirely
+        ↓
+Is feature critical? (For model, business)
+        ↓
+    Yes → Use sophisticated method (KNN, MICE, domain)
+    No → Simple method (mean, forward-fill)
+        ↓
+Impute on TRAIN only, apply to VAL/TEST
+        ↓
+Evaluate feature; check if imputation introduces bias
+```
+
+---
+
+## Common Pitfalls
+
+| Pitfall | Problem | Fix |
+|---------|---------|-----|
+| Impute before splitting | Leakage; test statistics influence train | Split first, impute train only |
+| Ignore missing values | Model crashes or gives wrong results | Always check and handle |
+| Delete too many rows | Lose information | Impute instead if possible |
+| Mean imputation for all | Reduces variance; weak features | Use KNN/MICE for important features |
+| Use mode for continuous | Discrete bias (multiple examples at same value) | Use mean or KNN for continuous |
+| Fill with 0 (wrong reason) | If 0 is meaningful, creates fake patterns | Use explicit NaN marker or imputation |
+
+---
+
+## Interview Questions
+
+**Q: Why can't you just delete rows with missing values?**
+
+Deletion throws away data; inefficient. More importantly, it's biased unless data is Missing Completely at Random (MCAR). If data is Missing at Random (MAR—missing related to other variables) or Missing Not at Random (MNAR—missing related to value itself), deletion introduces bias. Example: If high-income people skip income question, deleting those rows biases income distribution. Imputation is usually better. See [[Data Leakage Prevention]].
+
+---
+
+**Q: What's the difference between mean imputation and KNN imputation?**
+
+Mean imputation replaces missing with dataset average; simple but ignores relationships with other variables and reduces variance. KNN imputation replaces with weighted average of k nearest neighbors' values; more realistic (uses actual observed values) and preserves variance and correlations. Trade-off: KNN slower and requires complete neighbors to be available. For critical features with correlations, use KNN; for quick baseline, mean imputation OK. See [[Train Val Test Framework]] for data leakage.
+
+---
+
+**Q: If you're imputing missing values, when do you fit the imputer—before or after splitting data?**
+
+**After splitting** (correct). Fit imputer on train set only:
+```python
+imputer.fit(X_train)  # Learn mean/median/neighbors from train
+X_train_imputed = imputer.transform(X_train)
+X_test_imputed = imputer.transform(X_test)  # Apply train's statistics
+```
+
+If you fit on full data before splitting, test set statistics influence training → data leakage. Test performance estimate is biased. See [[Train Val Test Framework]].
+
+---
+
+**Q: You have a feature that is 30% missing. Should you drop it or impute?**
+
+Depends: (1) **How important is the feature?** If it's predictive and critical, impute (KNN or MICE). (2) **Why is it missing?** If MCAR, imputation is unbiased. If MNAR (high values more likely missing), imputation can't fix bias. (3) **How much data do you have?** If abundant, dropping is OK. If limited, impute. Rule of thumb: If feature is predictive, impute with sophisticated method (KNN/MICE). If feature is weak, drop. See [[Data Leakage Prevention]].
+
+---
+
+**Q: What's the difference between MCAR, MAR, and MNAR?**
+
+**MCAR (Missing Completely at Random):** Missingness is random, unrelated to any variable. Example: Random hard drive failure loses a data point. Deletion is unbiased. **MAR (Missing at Random):** Missingness related to *other* variables, not the variable itself. Example: High-income people skip income question due to privacy concerns (missingness related to income, but caused by external factor). Deletion is biased; imputation needed. **MNAR (Missing Not at Random):** Missingness related to the variable's own value. Example: Depressed people don't report depression severity (high values more likely missing). Both deletion and imputation are biased; need domain knowledge or sensitivity analysis. See [[Data Leakage Prevention]].
+
+---
+
+**Q: When would you use forward-fill imputation?**
+
+Only for time-series data where values change gradually and missingness is short gaps. Example: Sensor reading missing for 1-2 time steps; reasonable to assume it hasn't changed. Forward-fill preserves temporal structure. Don't use for cross-sectional data (no time order) or cross-sectional features (e.g., height doesn't have temporal meaning). If gap is long (many missing in a row), forward-fill propagates error; better to use interpolation or KNN. See [[Cross Validation Strategy]] for time-series CV.
+
+---
+
+**Q: Your imputation introduces highly correlated features (e.g., age imputed as average with adjacent examples also imputed). Is this a problem?**
+
+Yes, potential problem. Heavy imputation can create artificial correlations and reduce variance. KNN imputation is especially prone to this (k=5 means 5 neighbors are averaged—similar values). High correlation can: (1) Confuse tree-based models (split on correlated features). (2) Inflate feature importance (correlated features seem more important). (3) Introduce instability in linear models (multicollinearity). Mitigations: Use smaller k (k=3), add noise after imputation, use MICE which models relationships, or drop correlated features. See [[Categorical Encoding]].
+
+---
+
+## Connections
+
+- [[Train Val Test Framework]] — Fit imputer on train, apply to test
+- [[Data Leakage Prevention]] — Data leakage in imputation
+- [[Preprocessing Pipelines]] — Imputation in sklearn Pipeline
+- [[Common Mistakes in ML#4 - Not Scaling Features Before Gradient Descent]] — Preprocessing context
+
+---
+
+## One-line Summary
+
+> Missing values are detected via percentage analysis and pattern inspection; handle via deletion (if <1% and MCAR), mean/median (simple baseline), KNN/MICE (preserve variance and relationships), or domain imputation — always fit imputer on train set only, apply to val/test, and watch for leakage.

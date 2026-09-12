@@ -15,7 +15,7 @@ Classic Data Structures & Algorithms — the interview-prep backbone. Kept as it
 7. Recursion & Backtracking
 8. Dynamic Programming
 9. Greedy Algorithms
-10. Meta: Pattern Recognition — which technique for which problem shape (mirrors the "13.Meta Understanding" pattern already used in ML & DL)
+10. Meta: Pattern Recognition — which technique for which problem shape (mirrors the "21.Meta & Interview Revision" pattern already used in ML & DL)
 
 ## Why this folder exists
 

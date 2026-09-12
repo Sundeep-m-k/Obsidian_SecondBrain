@@ -192,7 +192,7 @@ This is equivalent to data augmentation and improves robustness: the model learn
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/4.Loss and Cost/Loss Function.md]] — Unigram LM is trained to maximise log-likelihood
 - [[3.ML & DL/1.Concepts/5.Optimization/Gradient Descent.md]] — EM for Unigram LM is an optimisation algorithm
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Vectorization.md]] — vocabulary → embedding table dimensions
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Vectorization.md]] — vocabulary → embedding table dimensions
 
 ---
 

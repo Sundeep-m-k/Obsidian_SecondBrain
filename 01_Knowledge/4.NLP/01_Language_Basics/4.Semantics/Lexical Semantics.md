@@ -1,7 +1,7 @@
 # Lexical Semantics
 
 tags: #nlp #semantics #word-meaning #lexical-resources #word-sense
-links: [[Compositional Semantics]] [[Semantic Roles]] [[Word Sense and Polysemy]] [[Frame Semantics]] [[Word2Vec — Skip-gram and CBOW]] [[GloVe]]
+links: [[Compositional Semantics]] [[Semantic Roles]] [[Word Sense and Polysemy]] [[Frame Semantics]] [[Word2Vec]] [[GloVe]]
 
 ---
 
@@ -168,13 +168,13 @@ These are polysemous (all related by spatial/opening metaphor)
 **From count-based to neural lexical semantics:**
 
 1. **Count-based** (PPMI + SVD): explicit co-occurrence → dimensionality reduction → dense vectors
-2. **Prediction-based** (Word2Vec): learn vectors by predicting context words → implicitly captures PMI [[Word2Vec — Skip-gram and CBOW]]
+2. **Prediction-based** (Word2Vec): learn vectors by predicting context words → implicitly captures PMI [[Word2Vec]]
 3. **Contextual** (BERT): different vector per occurrence of the same word → naturally handles polysemy [[BERT Embeddings]]
 
 The progression from 1→2→3 is essentially the story of lexical semantic representation in NLP.
 
 **Cross-links:**
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — word vectors are feature vectors over lexical space
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — word vectors are feature vectors over lexical space
 - [[3.ML & DL/1.Concepts/10.Unsupervised Learning/Dimensionality Reduction.md]] — SVD reduces the word-context matrix
 - [[3.ML & DL/1.Concepts/1.Foundations/Generalization.md]] — distributional hypothesis = generalization assumption for words
 

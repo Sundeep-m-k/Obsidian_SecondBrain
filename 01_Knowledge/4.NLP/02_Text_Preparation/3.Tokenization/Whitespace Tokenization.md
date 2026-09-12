@@ -92,7 +92,7 @@ tok.tokenize("It 's a fine day , isn 't it ?")
 - As **pre-processing for BPE**: SentencePiece and some BPE implementations first split on whitespace, then apply subword rules.
 
 **Cross-links:**
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — tokenization defines the feature space
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — tokenization defines the feature space
 - [[Tokenization — BPE]] — the upgrade from whitespace tokenization
 
 ---

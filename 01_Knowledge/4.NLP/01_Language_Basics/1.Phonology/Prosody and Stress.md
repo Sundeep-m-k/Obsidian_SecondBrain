@@ -113,7 +113,7 @@ Same phoneme sequence, four different meanings — purely prosodic distinction.
 
 **Direct ML links:**
 - Prosody modeling in TTS (Tacotron, VITS) uses attention over text to predict continuous F0 contours — essentially a regression problem: [[3.ML & DL/1.Concepts/3.Linear Regression/Regression Pipeline.md]]
-- Emotion detection from speech uses prosodic features (F0 mean/variance, speech rate) as input features: [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]]
+- Emotion detection from speech uses prosodic features (F0 mean/variance, speech rate) as input features: [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]]
 - Tonal language ASR needs the model to distinguish tone — a classification problem at the syllable level: [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]]
 
 ---

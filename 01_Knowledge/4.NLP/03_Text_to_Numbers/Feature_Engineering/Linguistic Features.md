@@ -168,12 +168,12 @@ print([(ent.text, ent.label_) for ent in doc.ents])
 
 | Linguistic Feature Concept | ML/NLP Link |
 |---------------------------|-------------|
-| Feature template = feature function | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — linguistic features are the NLP instance of domain-driven feature design |
-| One-hot POS encoding | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — categorical features become binary indicator vectors |
-| Window features = context | [[3.ML & DL/1.Concepts/6.Features and Representation/Multiple Features.md]] — concatenating multiple word features creates a wide feature vector |
+| Feature template = feature function | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — linguistic features are the NLP instance of domain-driven feature design |
+| One-hot POS encoding | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — categorical features become binary indicator vectors |
+| Window features = context | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Multiple Features.md]] — concatenating multiple word features creates a wide feature vector |
 | CRF with linguistic features | [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] — CRF is a discriminative classifier over sequences |
 | L1 regularisation on CRF weights | [[3.ML & DL/1.Concepts/9.Regularization/L1 Regularization.md]] — L1 induces sparsity; only informative features have non-zero weights |
-| Feature selection for high-dim features | [[3.ML & DL/1.Concepts/13.Meta Understanding/How to Choose Features.md]] — which features to include is a core ML decision |
+| Feature selection for high-dim features | [[3.ML & DL/1.Concepts/21.Meta & Interview Revision/How to Choose Features.md]] — which features to include is a core ML decision |
 | Gazetteer = prior knowledge | [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] — gazetteers inject external knowledge without labelled examples |
 | Overfitting on feature conjunctions | [[3.ML & DL/1.Concepts/8.Model Behavior/Overfitting.md]] — combinatorial feature templates can overfit on small datasets |
 

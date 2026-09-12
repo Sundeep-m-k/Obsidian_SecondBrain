@@ -96,7 +96,7 @@ All five are allophones of one phoneme `/t/` — English speakers hear them as "
 |                      |                                                          |
 
 **Cross-links:**
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — phonemes as feature bundles parallel ML feature vectors
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — phonemes as feature bundles parallel ML feature vectors
 - [[3.ML & DL/1.Concepts/1.Foundations/Features.md]] — distinctive features are binary features
 - The phoneme inventory is a **finite vocabulary** — the same concept as a token vocabulary in [[Tokenization — BPE]]
 

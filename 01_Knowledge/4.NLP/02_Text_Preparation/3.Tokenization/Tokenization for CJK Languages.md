@@ -162,7 +162,7 @@ MeCab: 私 | は | NLP | の | 研究 | 者 | です | 。
 **Cross-links:**
 - [[Morphological Typology]] — CJK languages span isolating (Mandarin) to agglutinative (Korean)
 - [[SentencePiece]] — best choice for production CJK tokenization
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — script-specific features
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — script-specific features
 
 ---
 

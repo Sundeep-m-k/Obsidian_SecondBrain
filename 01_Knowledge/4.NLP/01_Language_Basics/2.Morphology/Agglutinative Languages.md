@@ -156,7 +156,7 @@ Train a single model on 104 languages simultaneously. The shared subword vocabul
 
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/8.Model Behavior/Generalization.md]] — cross-lingual generalization failure
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Vectorization.md]] — the vocabulary size problem
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Vectorization.md]] — the vocabulary size problem
 - [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] — data sparsity per word form
 
 ---

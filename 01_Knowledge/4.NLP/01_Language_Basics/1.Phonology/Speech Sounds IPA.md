@@ -128,7 +128,7 @@ where $c_i$ are characters and $\phi_j$ are IPA phonemes. This is exactly [[3.ML
 The acoustic model computes $P(\phi \mid \text{mel frame})$ — a classification problem over the phoneme inventory at each time frame. [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]]
 
 **Phoneme embeddings:**
-Phonemes can be embedded using their feature vectors as initializations — a form of linguistically-informed [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]].
+Phonemes can be embedded using their feature vectors as initializations — a form of linguistically-informed [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]].
 
 ---
 

@@ -183,7 +183,7 @@ Statistical MT aligned `bank` with both Russian words; neural MT with contextual
 
 **Cross-links:**
 - [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] — WSD as multiclass classification
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Data Representation.md]] — contextual vs static representations
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Data Representation.md]] — contextual vs static representations
 - [[3.ML & DL/1.Concepts/8.Model Behavior/Underfitting.md]] — static embeddings underfit polysemous words
 
 ---

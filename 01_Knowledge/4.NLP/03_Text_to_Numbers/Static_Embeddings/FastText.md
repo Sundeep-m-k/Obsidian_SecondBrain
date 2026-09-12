@@ -127,11 +127,11 @@ model.predict("the match was intense", k=1)
 
 | FastText Concept | ML/NLP Link |
 |----------------|-------------|
-| Subword composition = feature aggregation | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — n-grams are hand-designed sub-features automatically learned |
-| Sum of n-gram embeddings | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — word vector is a sum (linear combination) of n-gram feature vectors |
+| Subword composition = feature aggregation | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — n-grams are hand-designed sub-features automatically learned |
+| Sum of n-gram embeddings | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — word vector is a sum (linear combination) of n-gram feature vectors |
 | OOV via n-gram composition | [[3.ML & DL/1.Concepts/1.Foundations/Generalization.md]] — FastText generalises to unseen words via subword structure |
 | Morphological awareness | [[Agglutinative Languages]] — FastText was explicitly designed to handle morphologically rich languages |
-| Hashing trick for n-gram vocab | [[3.ML & DL/1.Concepts/6.Features and Representation/Vectorization.md]] — hash trick is a fixed-size feature representation |
+| Hashing trick for n-gram vocab | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Vectorization.md]] — hash trick is a fixed-size feature representation |
 | Negative sampling objective | [[3.ML & DL/1.Concepts/4.Loss and Cost/Logistic Loss.md]] — same binary cross-entropy as Word2Vec SGNS |
 | N-gram features + linear classifier | [[3.ML & DL/1.Concepts/7.Logistic Regression/Classification Pipeline.md]] — FastText classifier is logistic regression over n-gram embeddings |
 | Shared n-gram parameters = regularisation | [[3.ML & DL/1.Concepts/9.Regularization/Regularization.md]] — sharing n-gram embeddings across words acts as morphological regularisation |

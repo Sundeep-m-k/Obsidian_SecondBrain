@@ -189,7 +189,7 @@ Transformers don't have an explicit compositionality mechanism — they use atte
 **The "algebraic generalization" problem**: Can models systematically generalize to novel compositions? SCAN benchmark shows neural models fail at systematic compositional generalization. GECA, COGS, and similar benchmarks probe this directly. → [[3.ML & DL/1.Concepts/8.Model Behavior/Generalization.md]]
 
 **Cross-links:**
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — phrase vectors as composed features
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — phrase vectors as composed features
 - [[3.ML & DL/1.Concepts/1.Foundations/Model.md]] — semantic parsing as a model of meaning
 
 ---

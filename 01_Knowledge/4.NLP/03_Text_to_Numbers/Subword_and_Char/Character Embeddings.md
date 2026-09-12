@@ -139,11 +139,11 @@ class CharCNN(nn.Module):
 | Character Embedding Concept | ML/NLP Link |
 |---------------------------|-------------|
 | Character vocab is closed set | [[3.ML & DL/1.Concepts/1.Foundations/Features.md]] — characters are a fixed feature alphabet |
-| CNN over character sequence | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — CNN automatically learns character n-gram features |
-| Max pooling = feature selection | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — max-over-time picks the most activated feature regardless of position |
+| CNN over character sequence | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — CNN automatically learns character n-gram features |
+| Max pooling = feature selection | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — max-over-time picks the most activated feature regardless of position |
 | OOV via character composition | [[3.ML & DL/1.Concepts/1.Foundations/Generalization.md]] — character model generalises to words outside training vocabulary |
 | Highway network | [[3.ML & DL/1.Concepts/5.Optimization/Gradient Descent.md]] — highway gates control gradient flow, enabling deep character CNNs |
-| Concatenating char + word embeddings | [[3.ML & DL/1.Concepts/6.Features and Representation/Multiple Features.md]] — combining information sources, standard in NER |
+| Concatenating char + word embeddings | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Multiple Features.md]] — combining information sources, standard in NER |
 | Char model for morphology | [[Morphemes — Free and Bound]] — character n-grams approximate morpheme boundaries |
 
 **When to use character embeddings**:

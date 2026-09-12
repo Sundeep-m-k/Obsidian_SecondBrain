@@ -144,7 +144,7 @@ print(sorted(sims, key=sims.get, reverse=True)[:5])
 | Dot product ≈ log co-occurrence | [[3.ML & DL/1.Concepts/3.Linear Regression/Hypothesis Function.md]] — bilinear model (dot product) as the hypothesis |
 | Weighting function reducing outlier influence | [[3.ML & DL/1.Concepts/8.Model Behavior/Overfitting.md]] — $f(X_{ij})$ prevents high-frequency pairs from dominating |
 | Bias terms $b_i$, $\tilde{b}_j$ | [[3.ML & DL/1.Concepts/3.Linear Regression/Parameters.md]] — bias absorbs marginal log-probabilities |
-| Pre-trained GloVe as feature | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — GloVe initialises embedding layers in downstream models |
+| Pre-trained GloVe as feature | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — GloVe initialises embedding layers in downstream models |
 | Global matrix = batch learning | [[3.ML & DL/1.Concepts/5.Optimization/Batch Gradient Descent.md]] — GloVe trains on the full co-occurrence matrix |
 
 **Pre-trained GloVe resources**:

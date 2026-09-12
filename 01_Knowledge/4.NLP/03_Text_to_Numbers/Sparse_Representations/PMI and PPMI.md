@@ -110,7 +110,7 @@ Row "ice" in the PPMI matrix captures the distributional meaning of *ice*.
 
 | PMI Concept | ML/NLP Application |
 |------------|-------------------|
-| PMI matrix row = word vector | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — distributional semantic representation |
+| PMI matrix row = word vector | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — distributional semantic representation |
 | Co-occurrence probabilities | [[3.ML & DL/1.Concepts/1.Foundations/Features.md]] — association statistics as features |
 | PPMI + SVD = LSA word vectors | [[3.ML & DL/1.Concepts/10.Unsupervised Learning/Dimensionality Reduction.md]] — truncated SVD on PPMI matrix |
 | PMI implicit in Word2Vec | [[Word2Vec]] — Levy & Goldberg (2014) showed skip-gram ≈ shifted PMI factorisation |

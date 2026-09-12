@@ -117,7 +117,7 @@ NLP systems operate on human language. Language has structure at every level —
 | Language Basics Concept | Links to ML Concept |
 |------------------------|-------------------|
 | Phoneme = finite vocabulary | [[3.ML & DL/1.Concepts/1.Foundations/Features.md]] |
-| Distributional hypothesis | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] |
+| Distributional hypothesis | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] |
 | Morphological complexity | [[Feature Engineering]] *(closest existing equivalent — a dedicated "Vocabulary Pruning" note doesn't exist yet)* |
 | Parse tree probabilities (PCFG) | [[3.ML & DL/1.Concepts/4.Loss and Cost/Cost Function.md]] |
 | Dependency parsing as classification | [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] |

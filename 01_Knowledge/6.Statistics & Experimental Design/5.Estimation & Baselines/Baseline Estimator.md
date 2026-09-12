@@ -46,7 +46,7 @@ Complex models have more ways to overfit, more hyperparameters that can be accid
 
 ## Related concepts
 
-[[Gradient Boosting]], [[HistGradientBoostingClassifier]], [[Grouped Train-Test Split]], [[Rolling-Origin Validation]], [[Brier Score]]
+[[Gradient Boosting]], [[HistGradientBoostingClassifier]], [[Grouped Train-Test Split]], [[Rolling-Origin Validation]], [[Brier Score]], [[Confidence Intervals and Bootstrap]]
 
 ## Tags
 

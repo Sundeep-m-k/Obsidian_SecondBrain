@@ -139,7 +139,7 @@ Compound: "Bundesministerium" → ["Bundesministerium"]
 Modern neural NLP mostly uses subword tokenizers (BPE, WordPiece), but rule-based tokenization is still the **first stage** in many pipelines — spaCy runs rule-based tokenization before its neural tagger/parser. Moses tokenization is still standard in MT preprocessing.
 
 **Cross-links:**
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Engineering.md]] — tokenization defines the feature atoms
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Engineering.md]] — tokenization defines the feature atoms
 - [[Sentence Boundary Detection]] — closely related; often done together
 
 ---

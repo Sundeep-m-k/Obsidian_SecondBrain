@@ -150,7 +150,7 @@ for param in model.parameters():
 | `[CLS]` vector for classification | [[3.ML & DL/1.Concepts/2.Supervised Learning/Classification.md]] — linear head on `[CLS]` = logistic regression on BERT features |
 | Overfitting on small datasets | [[3.ML & DL/1.Concepts/8.Model Behavior/Overfitting.md]] — BERT fine-tuning with <1k examples often overfits; use DistilBERT or frozen BERT |
 | WordPiece tokenisation | [[Subword Embeddings]] — BERT input is WordPiece subword tokens, not whole words |
-| Token embedding + position + segment | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — input representation is sum of three embedding tables |
+| Token embedding + position + segment | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — input representation is sum of three embedding tables |
 | Dropout in Transformer layers | [[3.ML & DL/1.Concepts/9.Regularization/Regularization.md]] — BERT uses 0.1 dropout throughout |
 | Learning rate warmup + decay | [[3.ML & DL/1.Concepts/5.Optimization/Learning Rate.md]] — linear warmup for 10% of steps, then linear decay |
 | NSP as auxiliary task | [[3.ML & DL/1.Concepts/4.Loss and Cost/Objective Function.md]] — multi-task training objective (MLM + NSP combined) |

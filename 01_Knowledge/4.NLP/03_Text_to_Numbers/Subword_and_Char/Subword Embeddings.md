@@ -158,9 +158,9 @@ king_embed = embed_matrix[king_id]  # 768-dim vector
 | Rare subwords → few updates → poor embeddings | [[3.ML & DL/1.Concepts/8.Model Behavior/Underfitting.md]] — rare tokens underfit due to insufficient training signal |
 | Tied embeddings = weight sharing | [[3.ML & DL/1.Concepts/9.Regularization/Regularization.md]] — weight tying is a form of parameter regularisation |
 | Embedding dim as bottleneck | [[3.ML & DL/1.Concepts/8.Model Behavior/Model Complexity.md]] — $d$ controls representation capacity vs. parameter budget |
-| Positional embedding + token embedding | [[3.ML & DL/1.Concepts/6.Features and Representation/Multiple Features.md]] — input is sum of multiple feature embeddings |
-| BPE vocabulary size tuning | [[3.ML & DL/1.Concepts/13.Meta Understanding/How to Choose Features.md]] — vocab size is a hyperparameter balancing OOV rate vs. sequence length |
-| Subword tokenisation = data representation | [[3.ML & DL/1.Concepts/6.Features and Representation/Data Representation.md]] — how raw text is structurally represented before any learning |
+| Positional embedding + token embedding | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Multiple Features.md]] — input is sum of multiple feature embeddings |
+| BPE vocabulary size tuning | [[3.ML & DL/1.Concepts/21.Meta & Interview Revision/How to Choose Features.md]] — vocab size is a hyperparameter balancing OOV rate vs. sequence length |
+| Subword tokenisation = data representation | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Data Representation.md]] — how raw text is structurally represented before any learning |
 
 ---
 

@@ -135,7 +135,7 @@ model.wv.most_similar(positive=["king","woman"], negative=["man"])  # analogy
 | Rare word representation | [[3.ML & DL/1.Concepts/8.Model Behavior/Bias Variance Tradeoff.md]] — skip-gram better for rare words (higher variance reduction than CBOW) |
 | Negative sampling distribution | [[3.ML & DL/1.Concepts/1.Foundations/Training Data.md]] — noise distribution shapes what the model learns |
 | Implicit PPMI factorisation | [[3.ML & DL/1.Concepts/11.Recommender Systems/Matrix Factorization.md]] — SGNS is matrix factorisation by gradient descent |
-| Word vectors as features | [[3.ML & DL/1.Concepts/6.Features and Representation/Feature Vector.md]] — pre-trained vectors initialise downstream model inputs |
+| Word vectors as features | [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Feature Vector.md]] — pre-trained vectors initialise downstream model inputs |
 
 ---
 

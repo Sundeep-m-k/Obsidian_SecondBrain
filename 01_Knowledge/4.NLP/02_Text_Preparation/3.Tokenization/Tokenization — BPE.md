@@ -194,7 +194,7 @@ tok.tokenize("🎉party")            # → ['ð', 'Ł', 'Ĳ', 'party']  ← byte
 **Byte-level BPE advantage**: handles emoji, code, and any Unicode without preprocessing. GPT-3/4 uses byte-level BPE — `🎉` is encoded as its UTF-8 bytes, which are part of the 256-symbol base vocabulary.
 
 **Cross-links:**
-- [[3.ML & DL/1.Concepts/6.Features and Representation/Vectorization.md]] — vocabulary determines the embedding table dimensions
+- [[3.ML & DL/1.Concepts/6.Feature Engineering & Data Preparation/Vectorization.md]] — vocabulary determines the embedding table dimensions
 - [[3.ML & DL/1.Concepts/8.Model Behavior/Generalization.md]] — subword sharing improves generalisation to unseen word forms
 - [[Morphemes — Free and Bound]] — BPE approximates morpheme segmentation
 
