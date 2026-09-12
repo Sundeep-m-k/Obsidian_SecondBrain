@@ -1,0 +1,9 @@
+{
+  "citationExportFormat": "biblatex",
+  "literatureNoteTitleTemplate": "{{authorString}}_{{year}}_{{titleShort}}",
+  "literatureNoteFolder": "Reading notes",
+  "literatureNoteContentTemplate": "# {{title}}\n\n## 📌 Metadata\ntitle: {{title}}\nauthors: {{authorString}}\nyear: {{year}}\ncitekey: {{citekey}}\nzotero: {{zoteroSelectURI}}\n\n## 🧠 Problem Definition\n- What EXACT problem is being solved?\n- Why is this problem important?\n\n---\n\n## 🔑 Core Idea (TL;DR)\n- 2–3 lines max (force clarity)\n\n---\n\n## ⚙️ Method (Technical Breakdown)\n\n### Input\n- \n\n### Model / Approach\n- \n\n### Output\n- \n\n### Key Components\n- (e.g., encoder, retriever, span predictor)\n\n---\n\n## 📊 Experiments\n\n### Dataset\n- \n\n### Metrics\n- \n\n### Results (ONLY key numbers)\n- \n\n### Baselines Compared\n- \n\n---\n\n## 💡 Key Insights\n- What actually worked?\n- What surprised you?\n\n---\n\n## ⚠️ Limitations\n- What does NOT work?\n- Where does it fail?\n\n---\n\n## 🔗 Connections (MOST IMPORTANT SECTION)\n\n### Concepts\n- [[Span Identification]]\n- [[Dense Retrieval]]\n- [[Reranking]]\n\n### Related Papers\n- \n\n### Related to My Work\n- [[AutoWiki]]\n\n👉 How exactly does this help your project?\n\n---\n\n## 🚀 Ideas / Extensions (THIS IS GOLD)\n\n- Can I improve this?  Actually the fut\n- Can I simplify this?\n- Can I combine this with something else?\n\n👉 Write at least ONE original idea\n\n---\n\n## 🧪 Repro / Experiment Ideas\n- What can I test from this paper?\n\n---\n\n## ⭐ Verdict\n\n### Relevance to my research:\n- High / Medium / Low\n\n### Should I revisit?\n- Yes / No\n\n### One-line takeaway:\n-\n\n",
+  "markdownCitationTemplate": "[@{{citekey}}]",
+  "alternativeMarkdownCitationTemplate": "@{{citekey}}",
+  "citationExportPath": "zotero.bib"
+}
