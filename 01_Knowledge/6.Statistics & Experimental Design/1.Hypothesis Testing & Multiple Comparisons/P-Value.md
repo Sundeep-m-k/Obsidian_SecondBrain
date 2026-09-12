@@ -51,7 +51,7 @@ Every downstream statistical decision here — [[Permutation Test]]s comparing a
 
 ## Prerequisites
 
-[[Hypothesis Test]], normal distribution / CDF
+[[Hypothesis Test]], [[Probability Distributions]] (CDF), [[Bayes' Theorem]] (a p-value is a likelihood, not a posterior)
 
 ## Related concepts
 

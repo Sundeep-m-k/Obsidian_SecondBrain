@@ -68,7 +68,7 @@ Testing one hypothesis at $\alpha=0.05$ risks a 5% false-positive rate. Testing 
 
 ## Prerequisites
 
-Basic probability, normal distribution
+[[Random Variables]], [[Probability Distributions]], [[Central Limit Theorem]]
 
 ## Related concepts
 

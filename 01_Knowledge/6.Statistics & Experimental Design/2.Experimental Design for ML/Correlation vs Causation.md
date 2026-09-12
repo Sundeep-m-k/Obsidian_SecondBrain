@@ -40,6 +40,7 @@ A high $|\rho|$ says $X$ and $Y$ tend to move together; it says nothing at all a
 
 ## Connections
 
+- [[Covariance and Correlation]] — the mathematics of measuring correlation this note's inferential warnings apply to
 - [[A-B Testing]] — the standard way to actually establish causation when it matters for a decision
 - [[Hypothesis Test]] — correlation itself is typically tested for statistical significance using this machinery
 - [[Multiple Comparisons Problem]] — spurious correlation from comparing many variable pairs is the same underlying issue

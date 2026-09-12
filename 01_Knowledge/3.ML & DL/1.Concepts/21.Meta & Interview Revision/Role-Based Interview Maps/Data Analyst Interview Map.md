@@ -4,7 +4,7 @@ Pure navigation — wikilinks only, no re-explained content. See [[ML Cheatsheet
 
 ## Must Know
 
-[[A-B Testing]] · [[Correlation vs Causation]] · [[Hypothesis Test]] · [[P-Value]] · [[Confidence Intervals and Bootstrap]] · [[Metric Selection and Diagnosing Change]] · [[Framing Ambiguous Business Problems]] · [[Confusion Matrix]] · [[Classification Metrics]] · [[Missing Values Handling]] · [[Outlier Detection and Treatment]] · [[Data Leakage]] · [[Feature Scaling]]
+[[Random Variables]] · [[Expectation]] · [[Variance and Standard Deviation]] · [[Covariance and Correlation]] · [[Conditional Probability]] · [[Bayes' Theorem]] · [[Central Limit Theorem]] · [[A-B Testing]] · [[Correlation vs Causation]] · [[Hypothesis Test]] · [[P-Value]] · [[Confidence Intervals and Bootstrap]] · [[Metric Selection and Diagnosing Change]] · [[Framing Ambiguous Business Problems]] · [[Confusion Matrix]] · [[Classification Metrics]] · [[Missing Values Handling]] · [[Outlier Detection and Treatment]] · [[Data Leakage]] · [[Feature Scaling]]
 
 ## Should Know
 
@@ -16,6 +16,6 @@ Pure navigation — wikilinks only, no re-explained content. See [[ML Cheatsheet
 
 ## Also See
 
-[[Common Interview Questions - ML]] · [[Databases & Data Systems Overview]] (SQL is typically the single most-tested skill for this role — [[SQL Join Types]], [[Aggregation & GROUP BY]], [[Window Functions]], [[Common Table Expressions (CTEs)]]) · [[OLTP vs OLAP]] · [[Star & Snowflake Schema]]
+[[Probability Foundations Index]] (start here — this DA bar leans hard on being able to explain [[Bayes' Theorem]]/[[Central Limit Theorem]] concepts in plain language, not just formulas) · [[Common Interview Questions - ML]] · [[Databases & Data Systems Overview]] (SQL is typically the single most-tested skill for this role — [[SQL Join Types]], [[Aggregation & GROUP BY]], [[Window Functions]], [[Common Table Expressions (CTEs)]]) · [[OLTP vs OLAP]] · [[Star & Snowflake Schema]]
 
 *Note: this role's interview bar leans more on SQL, experimentation, and business-metric reasoning than deep ML algorithm theory — the "Advanced" tier here is intentionally short.*

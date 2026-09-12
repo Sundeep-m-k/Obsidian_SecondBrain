@@ -4,7 +4,7 @@ Pure navigation — wikilinks only, no re-explained content. See [[ML Cheatsheet
 
 ## Must Know
 
-[[Hypothesis Test]] · [[P-Value]] · [[A-B Testing]] · [[Correlation vs Causation]] · [[Multiple Comparisons Problem]] · [[Confidence Intervals and Bootstrap]] · [[Confusion Matrix]] · [[Classification Metrics]] · [[Bias Variance Tradeoff]] · [[Regularization]] · [[Logistic Regression]] · [[Decision Tree]] · [[Random Forest]] · [[Gradient Boosting]] · [[Feature Engineering]] · [[Missing Values Handling]] · [[Data Leakage]] · [[Cross Validation Strategy]] · [[Class Imbalance Evaluation]] · [[Time Series Fundamentals]] · [[Framing Ambiguous Business Problems]] · [[Metric Selection and Diagnosing Change]]
+[[Random Variables]] · [[Probability Distributions]] · [[Expectation]] · [[Variance and Standard Deviation]] · [[Covariance and Correlation]] · [[Conditional Probability]] · [[Bayes' Theorem]] · [[Central Limit Theorem]] · [[Hypothesis Test]] · [[P-Value]] · [[A-B Testing]] · [[Correlation vs Causation]] · [[Multiple Comparisons Problem]] · [[Confidence Intervals and Bootstrap]] · [[Confusion Matrix]] · [[Classification Metrics]] · [[Bias Variance Tradeoff]] · [[Regularization]] · [[Logistic Regression]] · [[Decision Tree]] · [[Random Forest]] · [[Gradient Boosting]] · [[Feature Engineering]] · [[Missing Values Handling]] · [[Data Leakage]] · [[Cross Validation Strategy]] · [[Class Imbalance Evaluation]] · [[Time Series Fundamentals]] · [[Framing Ambiguous Business Problems]] · [[Metric Selection and Diagnosing Change]]
 
 ## Should Know
 
@@ -16,4 +16,4 @@ Pure navigation — wikilinks only, no re-explained content. See [[ML Cheatsheet
 
 ## Also See
 
-[[Common Interview Questions - ML]] · [[How to Choose Features]] · [[How to Diagnose Overfitting]] · [[Databases & Data Systems Overview]] (SQL fluency is routinely tested alongside statistics for this role)
+[[Probability Foundations Index]] (start here if probability fundamentals feel shaky — this is prerequisite to everything else on this map) · [[Common Interview Questions - ML]] · [[How to Choose Features]] · [[How to Diagnose Overfitting]] · [[Databases & Data Systems Overview]] (SQL fluency is routinely tested alongside statistics for this role)
