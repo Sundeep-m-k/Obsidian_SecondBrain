@@ -250,6 +250,7 @@ $$\delta^{(l)} = (W^{(l+1)\top}\delta^{(l+1)})\odot\sigma'(z^{(l)}) \qquad \text
 | [[Optimizers in Deep Learning\|Adam]] | Momentum + per-parameter adaptive LR; the practical default |
 | [[Attention Mechanism]] | $\text{softmax}(QK^\top/\sqrt{d_k})V$ — connects any two positions directly, no recurrence needed |
 | [[Transformer Architecture]] | Self-attention + positional encoding + FFN + residual/LayerNorm; decoder-only (GPT) = causal masking, encoder-only (BERT) = bidirectional |
+| [[Transformer End-to-End Walkthrough]] | "Explain a Transformer from scratch" — tokens → embeddings → attention (± causal mask) → vocab projection → logits → sampling, with a worked numerical example all the way through |
 
 ---
 
@@ -258,13 +259,16 @@ $$\delta^{(l)} = (W^{(l+1)\top}\delta^{(l+1)})\odot\sigma'(z^{(l)}) \qquad \text
 | Concept | One-liner |
 |---|---|
 | [[LLM Inference Fundamentals\|Context window]] | Hard limit from attention's ~quadratic cost; exceeding it silently truncates |
-| [[LLM Inference Fundamentals\|Temperature / top-p]] | Temperature rescales logits before softmax; top-p samples from the smallest cumulative-probability set |
+| [[Sampling and Decoding Strategies]] | Temperature reshapes the distribution before sampling; top-k caps candidate *count*; top-p caps candidate *cumulative probability* (adapts to confidence, top-k doesn't) |
+| [[Query Rewriting]] | Expansion/decomposition/multi-query/HyDE/conversational rewriting — fixes queries too vague or context-dependent to retrieve well on their own |
 | [[Dense vs Sparse Retrieval]] | BM25 (sparse) = exact terms; embeddings (dense) = semantic meaning; combine both ([[Reranking and Hybrid Search]]) |
 | [[RAG Architecture]] | Retrieve → (rerank) → insert into prompt → generate; reduces but doesn't eliminate hallucination |
 | [[RAG Evaluation]] | Context precision/recall (retrieval) vs. faithfulness/answer relevance (generation) — separate failure modes |
+| [[Caching Strategies for LLM Systems]] | Prompt caching = reuse computation for an exact prefix; semantic caching = reuse a whole response for a *similar* query — mechanically different, different risks |
 | [[Workflows vs Agents]] | Default to a fixed workflow when steps are knowable in advance; agent only when they genuinely aren't |
 | [[Agent Failure Modes and Guardrails\|Agent guardrails]] | Iteration limits, least-privilege tool access, human-in-the-loop for high-stakes actions |
 | [[Prompt Injection and Production Reliability\|Prompt injection]] | Untrusted fetched content interpreted as instructions — no clean fix like parameterized SQL; mitigate via scoping + validation |
+| [[Design a Production RAG System for 10 Million Documents]] | The system-design anchor — composes every row above into one interview-format walkthrough |
 
 ---
 
@@ -272,12 +276,17 @@ $$\delta^{(l)} = (W^{(l+1)\top}\delta^{(l+1)})\odot\sigma'(z^{(l)}) \qquad \text
 
 | Concept | One-liner |
 |---|---|
+| [[Bayes' Theorem]] | Posterior ∝ likelihood × prior — ignoring the prior ("base rate neglect") is why a 95%-accurate test on a rare condition gives a much-lower-than-95% true positive rate |
+| [[Central Limit Theorem]] | Sample means trend normal as $n$ grows, *regardless* of the population's own shape — why normal-based CIs work on non-normal data |
+| [[Covariance and Correlation]] | Correlation only captures *linear* association — $\rho=0$ doesn't mean unrelated ($Y=X^2$ is a counterexample) |
 | [[A-B Testing]] | Randomization breaks confounding; never peek-and-stop early (inflates false positives) |
 | [[Correlation vs Causation]] | Confounding, reverse causation, selection bias, coincidence — only randomization (or quasi-experimental methods) establishes causation |
 | [[Time Series Fundamentals]] | Decompose trend/seasonality/residual; check stationarity before ARIMA; **temporal split, never random** |
 | [[Framing Ambiguous Business Problems]] | Clarify the goal and the decision it informs *before* naming a technique |
 | [[Metric Selection and Diagnosing Change]] | Rule out measurement error → known external cause → segment → then investigate causally |
 | [[Model vs Rule Decisions]] | Rule wins: simple pattern, scarce data, interpretability required. Model wins: complex/shifting pattern, enough data+monitoring maturity |
+
+See [[Probability Foundations Index]] for the full random-variables/distributions/expectation/variance/Bayes/CLT layer this table assumes.
 
 ---
 

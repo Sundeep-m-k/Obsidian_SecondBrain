@@ -4,11 +4,11 @@ Pure navigation — wikilinks only, no re-explained content. Overlaps heavily wi
 
 ## Must Know
 
-[[Transformer Architecture]] · [[Attention Mechanism]] · [[LLM Inference Fundamentals]] · [[RAG Architecture]] · [[Dense vs Sparse Retrieval]] · [[Vector Search and Databases]] · [[AI Agents Fundamentals]] · [[Workflows vs Agents]] · [[Transfer Learning and Fine-Tuning]] · [[Hallucination Mitigation]] · [[Prompt Injection and Production Reliability]]
+[[Transformer End-to-End Walkthrough]] (this role's bar includes "explain a Transformer from scratch" — start here) · [[Transformer Architecture]] · [[Attention Mechanism]] · [[LLM Inference Fundamentals]] · [[Sampling and Decoding Strategies]] · [[RAG Architecture]] · [[Query Rewriting]] · [[Dense vs Sparse Retrieval]] · [[Vector Search and Databases]] · [[AI Agents Fundamentals]] · [[Workflows vs Agents]] · [[Transfer Learning and Fine-Tuning]] · [[Hallucination Mitigation]] · [[Prompt Injection and Production Reliability]] · [[Design a Production RAG System for 10 Million Documents]]
 
 ## Should Know
 
-[[Multi-Layer Perceptron]] · [[Backpropagation]] · [[Activation Functions]] · [[Batch and Layer Normalization]] · [[Dropout]] · [[Optimizers in Deep Learning]] · [[Learning Rate Scheduling]] · [[Chunking Strategies]] · [[Reranking and Hybrid Search]] · [[RAG Evaluation]] · [[Planning and Memory]] · [[Multi-Agent Systems]] · [[Agent Failure Modes and Guardrails]] · [[Latency and Cost Optimization]] · [[Observability and Evaluation for LLM Systems]] · [[Training Loops and PyTorch Fundamentals]] · [[Inference vs Training]]
+[[Multi-Layer Perceptron]] · [[Backpropagation]] · [[Activation Functions]] · [[Batch and Layer Normalization]] · [[Dropout]] · [[Optimizers in Deep Learning]] · [[Learning Rate Scheduling]] · [[Chunking Strategies]] · [[Reranking and Hybrid Search]] · [[RAG Evaluation]] · [[Planning and Memory]] · [[Multi-Agent Systems]] · [[Agent Failure Modes and Guardrails]] · [[Latency and Cost Optimization]] · [[Caching Strategies for LLM Systems]] · [[Observability and Evaluation for LLM Systems]] · [[Training Loops and PyTorch Fundamentals]] · [[Inference vs Training]]
 
 ## Advanced / Differentiator
 

@@ -12,14 +12,15 @@ tags: [category/ml-dl, topic/applied-ai, index, moc]
 
 | Subfolder | Notes | Covers |
 |---|---|---|
-| 1. LLM Fundamentals | [[LLM Inference Fundamentals]] | Context windows, temperature/top-p, structured outputs, tool calling, prompting |
-| 2. Retrieval & RAG | [[Dense vs Sparse Retrieval]], [[Vector Search and Databases]], [[Chunking Strategies]], [[Reranking and Hybrid Search]], [[RAG Architecture]], [[RAG Evaluation]] | The full retrieval-augmented-generation pipeline |
+| 1. LLM Fundamentals | [[LLM Inference Fundamentals]], [[Sampling and Decoding Strategies]] | Context windows, structured outputs, tool calling, prompting, and (own note) greedy/temperature/top-k/top-p decoding |
+| 2. Retrieval & RAG | [[Query Rewriting]], [[Dense vs Sparse Retrieval]], [[Vector Search and Databases]], [[Chunking Strategies]], [[Reranking and Hybrid Search]], [[RAG Architecture]], [[RAG Evaluation]] | The full retrieval-augmented-generation pipeline |
 | 3. AI Agents | [[AI Agents Fundamentals]], [[Planning and Memory]], [[Workflows vs Agents]], [[Multi-Agent Systems]], [[Agent Failure Modes and Guardrails]] | Agent loops, when to use them, coordination, and failure modes |
-| 4. Production AI Systems | [[Latency and Cost Optimization]], [[Observability and Evaluation for LLM Systems]], [[Hallucination Mitigation]], [[Prompt Injection and Production Reliability]] | Operating LLM systems reliably in production |
+| 4. Production AI Systems | [[Latency and Cost Optimization]], [[Caching Strategies for LLM Systems]], [[Observability and Evaluation for LLM Systems]], [[Hallucination Mitigation]], [[Prompt Injection and Production Reliability]] | Operating LLM systems reliably in production |
+| 5. System Design | [[Design a Production RAG System for 10 Million Documents]] | A worked, interview-format system-design anchor composing sections 1-4 into one 45-minute answer |
 
 ## Reading Order
 
-LLM Fundamentals → Retrieval & RAG → AI Agents → Production AI Systems. Retrieval & RAG and AI Agents don't strictly depend on each other (a RAG pipeline is usually a fixed [[Workflows vs Agents|workflow]], not an agent), but most real systems combine both, so understanding RAG first makes the "agent with retrieval as one of its tools" pattern immediately clear once Agents is covered.
+LLM Fundamentals → Retrieval & RAG → AI Agents → Production AI Systems → System Design. Retrieval & RAG and AI Agents don't strictly depend on each other (a RAG pipeline is usually a fixed [[Workflows vs Agents|workflow]], not an agent), but most real systems combine both, so understanding RAG first makes the "agent with retrieval as one of its tools" pattern immediately clear once Agents is covered. Section 5 should be read last — it's a synthesis of everything above, not new material.
 
 ## Deliberately Not Duplicated Here
 
