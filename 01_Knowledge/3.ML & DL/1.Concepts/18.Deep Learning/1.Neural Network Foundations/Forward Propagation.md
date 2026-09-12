@@ -20,6 +20,67 @@ In practice, forward propagation runs on a **batch** of examples simultaneously,
 
 ---
 
+## Worked Numerical Example: A 2→2→1 Network
+
+Used consistently here and in [[Backpropagation]] (which continues this exact example through the backward pass and a weight update) — small enough to check by hand, real enough to show every mechanic.
+
+**Architecture**: 2 inputs → 2 hidden neurons (sigmoid) → 1 output neuron (sigmoid).
+
+**Initial weights and biases** (arbitrary starting values, exactly as a network would be handed after [[Weight Initialization]]):
+$$w_1{=}0.15,\ w_2{=}0.20,\ w_3{=}0.25,\ w_4{=}0.30 \ \text{(input→hidden)}, \quad b_1{=}0.35 \ \text{(shared hidden bias)}$$
+$$w_5{=}0.40,\ w_6{=}0.45 \ \text{(hidden→output)}, \quad b_2{=}0.60 \ \text{(output bias)}$$
+
+**Input**: $i_1{=}0.05,\ i_2{=}0.10$. **Target**: $y{=}0.01$.
+
+### Step 1 — Weighted sum into the hidden layer
+
+$$\text{net}_{h1} = w_1 i_1 + w_2 i_2 + b_1 = 0.15(0.05)+0.20(0.10)+0.35 = 0.3775$$
+$$\text{net}_{h2} = w_3 i_1 + w_4 i_2 + b_1 = 0.25(0.05)+0.30(0.10)+0.35 = 0.3925$$
+
+### Step 2 — Activation (sigmoid) of the hidden layer
+
+$$\text{out}_{h1} = \sigma(0.3775) = \frac{1}{1+e^{-0.3775}} \approx 0.5933, \qquad \text{out}_{h2} = \sigma(0.3925) \approx 0.5968$$
+
+### Step 3 — Weighted sum into the output layer
+
+$$\text{net}_{o} = w_5\,\text{out}_{h1} + w_6\,\text{out}_{h2} + b_2 = 0.40(0.5933)+0.45(0.5968)+0.60 \approx 1.1059$$
+
+### Step 4 — Prediction (activation of the output)
+
+$$\hat y = \sigma(1.1059) \approx 0.7514$$
+
+### Step 5 — Loss (squared error)
+
+$$E = \tfrac{1}{2}(y-\hat y)^2 = \tfrac{1}{2}(0.01-0.7514)^2 \approx 0.2749$$
+
+The network currently predicts 0.7514 for a target of 0.01 — badly wrong, as expected before any training. [[Backpropagation]] picks up here: computing exactly how much each of $w_1$ through $w_6$ contributed to this error, and updating them to reduce it. The same numbers are reused there — nothing here is thrown away, everything computed in steps 1-4 (the cached $\text{net}$ and $\text{out}$ values) is exactly what the backward pass needs, which is precisely the point made below about why the forward pass must be cached.
+
+### Minimal Python (the same 5 steps, in code)
+
+```python
+import math
+
+def sigmoid(z): return 1 / (1 + math.exp(-z))
+
+i1, i2 = 0.05, 0.10
+w1, w2, w3, w4, b1 = 0.15, 0.20, 0.25, 0.30, 0.35
+w5, w6, b2 = 0.40, 0.45, 0.60
+target = 0.01
+
+net_h1 = w1*i1 + w2*i2 + b1
+net_h2 = w3*i1 + w4*i2 + b1
+out_h1, out_h2 = sigmoid(net_h1), sigmoid(net_h2)          # Step 2
+
+net_o = w5*out_h1 + w6*out_h2 + b2
+y_hat = sigmoid(net_o)                                      # Step 4
+
+loss = 0.5 * (target - y_hat)**2                             # Step 5
+print(f"prediction={y_hat:.4f}  loss={loss:.4f}")
+# prediction=0.7514  loss=0.2749 — matches the hand computation above
+```
+
+---
+
 ## Interview Questions
 
 **What has to be cached during the forward pass, and why?** Every layer's pre-activation and post-activation values — backpropagation's chain-rule computation at each layer needs the values that were actually produced during the forward pass, not just the final output, so recomputing them from scratch during the backward pass would be wasteful (and in practice, isn't how it's done).
