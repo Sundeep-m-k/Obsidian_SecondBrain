@@ -20,11 +20,12 @@ tags: [category/statistics, topic/probability, index, moc]
 | [[Conditional Probability]] | Updating probability given evidence; independence vs. mutual exclusivity |
 | [[Bayes' Theorem]] | Reversing a conditional probability; prior/likelihood/posterior |
 | [[Sampling and Sampling Distributions]] | Population vs. sample vs. sampling distribution; sampling bias vs. sample size |
-| [[Central Limit Theorem]] | Why sample means trend normal regardless of the population's shape |
+| [[Law of Large Numbers]] | Why the sample average converges to the true mean as $n$ grows — convergence, not shape |
+| [[Central Limit Theorem]] | Why sample means trend normal regardless of the population's shape — shape, not just convergence |
 
 ## Reading Order
 
-Random Variables → Probability Distributions → Expectation → Variance → Covariance and Correlation → Conditional Probability → Bayes' Theorem → Sampling and Sampling Distributions → Central Limit Theorem → then [[Hypothesis Test]] and onward into the rest of this Statistics module.
+Random Variables → Probability Distributions → Expectation → Variance → Covariance and Correlation → Conditional Probability → Bayes' Theorem → Sampling and Sampling Distributions → Law of Large Numbers → Central Limit Theorem (read these last two together — they're the pair most often confused) → then [[Hypothesis Test]] and onward into the rest of this Statistics module.
 
 ## Worked Synthesis: Explaining a P-Value to a Non-Technical Stakeholder
 

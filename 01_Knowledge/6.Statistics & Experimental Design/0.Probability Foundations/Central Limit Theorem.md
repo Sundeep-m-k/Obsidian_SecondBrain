@@ -52,6 +52,8 @@ This progression — flat, to lumpy-but-symmetric, to clearly bell-shaped — *i
 
 ## Interview Questions
 
+**What's the difference between the CLT and the Law of Large Numbers?** See [[Law of Large Numbers]] for the full comparison — briefly, LLN guarantees the sample average *converges* to the true mean as $n$ grows; CLT is the sharper, separate claim about the *normal shape* the remaining (properly rescaled) fluctuation around that mean takes — "more data stabilizes the average" is LLN, "the sampling distribution of the mean becomes approximately normal" is CLT.
+
 **Why can you use a normal-distribution-based confidence interval for a mean, even when the underlying data is clearly not normal?** The CLT says it's the *sampling distribution of the mean* that approaches normal as $n$ grows, regardless of the population's own shape — the confidence interval formula relies on this fact about the mean's behavior under repeated sampling, not on the raw data itself being normally distributed.
 
 **Why does the standard error shrink as $\sqrt{n}$ rather than $n$?** It follows directly from variance scaling: the variance of a sample mean is $\sigma^2/n$, so its standard deviation (the standard error) is $\sigma/\sqrt{n}$ — a consequence of averaging independent observations, and the direct reason halving your margin of error requires quadrupling your sample size, not doubling it.
@@ -64,6 +66,7 @@ This progression — flat, to lumpy-but-symmetric, to clearly bell-shaped — *i
 
 ## Connections
 
+- [[Law of Large Numbers]] — the complementary, more basic claim (convergence) that this note's *shape-of-convergence* claim builds on top of; commonly confused with this note, worth reading together
 - [[Sampling and Sampling Distributions]] — the CLT is a specific, precise statement about one particular sampling distribution
 - [[Confidence Intervals and Bootstrap]] — the theoretical justification for normal-approximation confidence intervals
 - [[Hypothesis Test]], [[A-B Testing]] — most classical significance tests lean on the CLT for their normal-approximation validity
