@@ -42,6 +42,7 @@ Both planning and memory exist as engineering problems specifically because the 
 
 ## Connections
 
+- [[AI Agent End-to-End Execution Trace]] — the state-vs-memory distinction made concrete in a worked trace
 - [[AI Agents Fundamentals]] — the loop planning and memory both support
 - [[LLM Inference Fundamentals]] — the context-window constraint driving both design problems
 - [[RAG Architecture]], [[Vector Search and Databases]] — the retrieval mechanism long-term memory typically reuses

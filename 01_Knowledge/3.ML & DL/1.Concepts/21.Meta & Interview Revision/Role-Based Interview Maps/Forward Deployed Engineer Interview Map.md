@@ -4,11 +4,11 @@ Pure navigation — wikilinks only, no re-explained content. This role's intervi
 
 ## Must Know
 
-[[Design a Production RAG System for 10 Million Documents]] (read this one first — it's the composed version of everything else on this map) · [[LLM Inference Fundamentals]] · [[Sampling and Decoding Strategies]] · [[RAG Architecture]] · [[Query Rewriting]] · [[Dense vs Sparse Retrieval]] · [[Vector Search and Databases]] · [[Chunking Strategies]] · [[AI Agents Fundamentals]] · [[Workflows vs Agents]] · [[Agent Failure Modes and Guardrails]] · [[Latency and Cost Optimization]] · [[Caching Strategies for LLM Systems]] · [[Prompt Injection and Production Reliability]] · [[Model vs Rule Decisions]] · [[Framing Ambiguous Business Problems]]
+[[Design a Production RAG System for 10 Million Documents]] (read this one first — it's the composed version of everything else on this map) · [[LLM Inference Fundamentals]] · [[Sampling and Decoding Strategies]] · [[RAG Architecture]] · [[Query Rewriting]] · [[Dense vs Sparse Retrieval]] · [[Vector Search and Databases]] · [[Chunking Strategies]] · [[AI Agents Fundamentals]] · [[AI Agent End-to-End Execution Trace]] · [[Workflows vs Agents]] · [[Agent Failure Modes and Guardrails]] · [[Latency and Cost Optimization]] · [[Caching Strategies for LLM Systems]] · [[Prompt Injection and Production Reliability]] · [[Model vs Rule Decisions]] · [[Framing Ambiguous Business Problems]]
 
 ## Should Know
 
-[[Transformer End-to-End Walkthrough]] · [[Reranking and Hybrid Search]] · [[RAG Evaluation]] · [[Planning and Memory]] · [[Multi-Agent Systems]] · [[Observability and Evaluation for LLM Systems]] · [[Hallucination Mitigation]] · [[Transfer Learning and Fine-Tuning]] · [[Inference vs Training]] · [[Training Loops and PyTorch Fundamentals]] · [[Transformer Architecture]] · [[Attention Mechanism]] · [[Deployment Strategies]] · [[Model Monitoring in Production]] · [[Data Drift and Concept Drift]]
+[[Transformer End-to-End Walkthrough]] · [[Reranking and Hybrid Search]] · [[RAG Evaluation]] · [[Planning and Memory]] · [[Multi-Agent Systems]] · [[Observability and Evaluation for LLM Systems]] · [[Hallucination Mitigation]] · [[Transfer Learning and Fine-Tuning]] · [[Inference vs Training]] · [[Training Loops and PyTorch Fundamentals]] · [[Transformer Architecture]] · [[Attention Mechanism]] · [[Deployment Strategies]] · [[Model Monitoring in Production]] · [[Data Drift and Concept Drift]] · [[Feature Stores]] · [[Model Versioning and Reproducibility]]
 
 ## Advanced / Differentiator
 

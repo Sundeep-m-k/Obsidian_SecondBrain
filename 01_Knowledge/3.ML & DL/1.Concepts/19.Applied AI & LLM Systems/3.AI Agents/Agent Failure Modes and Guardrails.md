@@ -44,6 +44,7 @@ Because an [[AI Agents Fundamentals|agent]] decides its own actions at runtime r
 
 ## Connections
 
+- [[AI Agent End-to-End Execution Trace]] — a worked failure trace (prompt injection via a tool result) showing these guardrails firing in context
 - [[AI Agents Fundamentals]] — the loop structure that makes these failure modes possible in the first place
 - [[Multi-Agent Systems]] — these same failure modes compound across multiple agents
 - [[Prompt Injection and Production Reliability]] — the deepest treatment of the prompt-injection failure mode specifically

@@ -34,6 +34,7 @@ Most production LLM systems live somewhere in the middle of this spectrum, not a
 
 ## Connections
 
+- [[AI Agent End-to-End Execution Trace]] — includes this decision as a row in a worked planning-approach table
 - [[AI Agents Fundamentals]] — the full-autonomy end of the spectrum
 - [[RAG Architecture]] — a canonical example of a fixed workflow, not an agent
 - Latency and Cost Optimization (module 19, Production AI Systems) — a direct practical consequence of this choice

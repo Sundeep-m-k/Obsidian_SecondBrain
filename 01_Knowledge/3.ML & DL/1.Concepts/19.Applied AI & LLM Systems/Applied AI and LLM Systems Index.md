@@ -14,7 +14,7 @@ tags: [category/ml-dl, topic/applied-ai, index, moc]
 |---|---|---|
 | 1. LLM Fundamentals | [[LLM Inference Fundamentals]], [[Sampling and Decoding Strategies]] | Context windows, structured outputs, tool calling, prompting, and (own note) greedy/temperature/top-k/top-p decoding |
 | 2. Retrieval & RAG | [[Query Rewriting]], [[Dense vs Sparse Retrieval]], [[Vector Search and Databases]], [[Chunking Strategies]], [[Reranking and Hybrid Search]], [[RAG Architecture]], [[RAG Evaluation]] | The full retrieval-augmented-generation pipeline |
-| 3. AI Agents | [[AI Agents Fundamentals]], [[Planning and Memory]], [[Workflows vs Agents]], [[Multi-Agent Systems]], [[Agent Failure Modes and Guardrails]] | Agent loops, when to use them, coordination, and failure modes |
+| 3. AI Agents | [[AI Agents Fundamentals]], [[Planning and Memory]], [[Workflows vs Agents]], [[Multi-Agent Systems]], [[Agent Failure Modes and Guardrails]], [[AI Agent End-to-End Execution Trace]] | Agent loops, when to use them, coordination, failure modes, and (own note) a full worked trace + LangGraph terminology bridge |
 | 4. Production AI Systems | [[Latency and Cost Optimization]], [[Caching Strategies for LLM Systems]], [[Observability and Evaluation for LLM Systems]], [[Hallucination Mitigation]], [[Prompt Injection and Production Reliability]] | Operating LLM systems reliably in production |
 | 5. System Design | [[Design a Production RAG System for 10 Million Documents]] | A worked, interview-format system-design anchor composing sections 1-4 into one 45-minute answer |
 

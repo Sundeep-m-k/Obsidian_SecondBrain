@@ -36,6 +36,7 @@ A single LLM call is bounded by what the model already knows and can reason abou
 
 ## Connections
 
+- [[AI Agent End-to-End Execution Trace]] — a concrete worked trace showing this loop run on a real task
 - [[LLM Inference Fundamentals]] — tool/function calling is the mechanism every step of the agent loop is built on
 - [[Planning and Memory]] — the two capabilities that make longer, more complex agent tasks tractable
 - [[Workflows vs Agents]] — when this loop is actually the right architecture, vs. simpler alternatives

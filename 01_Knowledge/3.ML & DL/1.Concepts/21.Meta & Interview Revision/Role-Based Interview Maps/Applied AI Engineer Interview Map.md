@@ -4,7 +4,7 @@ Pure navigation — wikilinks only, no re-explained content. Overlaps heavily wi
 
 ## Must Know
 
-[[Transformer End-to-End Walkthrough]] (this role's bar includes "explain a Transformer from scratch" — start here) · [[Transformer Architecture]] · [[Attention Mechanism]] · [[LLM Inference Fundamentals]] · [[Sampling and Decoding Strategies]] · [[RAG Architecture]] · [[Query Rewriting]] · [[Dense vs Sparse Retrieval]] · [[Vector Search and Databases]] · [[AI Agents Fundamentals]] · [[Workflows vs Agents]] · [[Transfer Learning and Fine-Tuning]] · [[Hallucination Mitigation]] · [[Prompt Injection and Production Reliability]] · [[Design a Production RAG System for 10 Million Documents]]
+[[Transformer End-to-End Walkthrough]] (this role's bar includes "explain a Transformer from scratch" — start here) · [[Transformer Architecture]] · [[Attention Mechanism]] · [[LLM Inference Fundamentals]] · [[Sampling and Decoding Strategies]] · [[RAG Architecture]] · [[Query Rewriting]] · [[Dense vs Sparse Retrieval]] · [[Vector Search and Databases]] · [[AI Agents Fundamentals]] · [[AI Agent End-to-End Execution Trace]] · [[Workflows vs Agents]] · [[Transfer Learning and Fine-Tuning]] · [[Hallucination Mitigation]] · [[Prompt Injection and Production Reliability]] · [[Design a Production RAG System for 10 Million Documents]]
 
 ## Should Know
 
