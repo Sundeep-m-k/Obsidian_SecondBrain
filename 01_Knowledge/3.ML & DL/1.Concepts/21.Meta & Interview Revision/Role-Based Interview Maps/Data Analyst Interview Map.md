@@ -4,7 +4,7 @@ Pure navigation — wikilinks only, no re-explained content. See [[ML Cheatsheet
 
 ## Must Know
 
-[[Random Variables]] · [[Expectation]] · [[Variance and Standard Deviation]] · [[Covariance and Correlation]] · [[Conditional Probability]] · [[Bayes' Theorem]] · [[Central Limit Theorem]] · [[A-B Testing]] · [[Correlation vs Causation]] · [[Hypothesis Test]] · [[P-Value]] · [[Confidence Intervals and Bootstrap]] · [[Metric Selection and Diagnosing Change]] · [[Framing Ambiguous Business Problems]] · [[Confusion Matrix]] · [[Classification Metrics]] · [[Missing Values Handling]] · [[Outlier Detection and Treatment]] · [[Data Leakage]] · [[Feature Scaling]]
+[[Random Variables]] · [[Expectation]] · [[Variance and Standard Deviation]] · [[Covariance and Correlation]] · [[Conditional Probability]] · [[Bayes' Theorem]] · [[Law of Large Numbers]] · [[Central Limit Theorem]] · [[A-B Testing]] · [[Correlation vs Causation]] · [[Hypothesis Test]] · [[P-Value]] · [[Confidence Intervals and Bootstrap]] · [[Metric Selection and Diagnosing Change]] · [[Framing Ambiguous Business Problems]] · [[Confusion Matrix]] · [[Classification Metrics]] · [[Missing Values Handling]] · [[Outlier Detection and Treatment]] · [[Data Leakage]] · [[Feature Scaling]]
 
 ## Should Know
 
