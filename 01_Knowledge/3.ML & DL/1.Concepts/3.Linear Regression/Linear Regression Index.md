@@ -20,6 +20,7 @@ tags: [category/ml-dl, index, moc]
 | [[Multiple Linear Regression]] | Extending to more than one feature |
 | [[Polynomial Regression]] | Fitting non-linear relationships with a linear model over transformed features |
 | [[Regression Pipeline]] | The end-to-end workflow — from raw data to prediction |
+| [[Regression Diagnostics]] | Detecting and fixing violations of the Gauss-Markov assumptions (linearity, homoscedasticity, normality, multicollinearity, influential points) |
 
 ## One-line Summary
 

@@ -117,6 +117,8 @@ For OLS to be BLUE (Best Linear Unbiased Estimator):
 4. $\text{Cov}(\epsilon^{(i)}, \epsilon^{(j)}) = 0$ for $i \neq j$ (independent errors)
 5. No perfect multicollinearity in $X$
 
+**What to actually do when one of these is violated** — how to detect it, what it looks like, and how to fix it — is covered in full in [[Regression Diagnostics]], including a worked case with real remediation reasoning rather than assuming a transformation is an automatic fix.
+
 ---
 
 ## When to Use Linear Regression
@@ -140,6 +142,7 @@ For OLS to be BLUE (Best Linear Unbiased Estimator):
 - [[Mean Squared Error]] — the loss minimised during training
 - [[Gradient Descent]] — the iterative optimisation method
 - [[Regression]] — the general task
+- [[Regression Diagnostics]] — how to detect and fix violations of the assumptions above
 
 ---
 
