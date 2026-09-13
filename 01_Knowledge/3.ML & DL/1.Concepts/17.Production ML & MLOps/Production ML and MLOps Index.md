@@ -2,9 +2,9 @@
 
 ## Overview
 
-Production ML covers drift detection, monitoring, evaluation, versioning, deployment, and retraining. Six files guide building reliable, maintainable systems.
+Production ML covers feature infrastructure, drift detection, monitoring, evaluation, versioning/registry, deployment, and retraining. Seven files guide building reliable, maintainable systems.
 
-**Total Content:** 6 files, ~20 KB | 25+ Questions | 20+ Code Examples
+**2026-09 update (P1 pass)**: Deployment Strategies and Model Monitoring in Production were substantially expanded (rolling deployment, worked canary/incident walkthroughs, the four-layer monitoring framework, drift taxonomy, alert design); Model Versioning and Reproducibility gained a full Model Registry section (previously one unexplained clause); Feature Stores was added as a new note (previously zero coverage vault-wide).
 
 ---
 
@@ -12,11 +12,12 @@ Production ML covers drift detection, monitoring, evaluation, versioning, deploy
 
 | File | Focus | Key Concepts |
 |------|-------|--------------|
+| [[Feature Stores]] | Training-serving skew, offline/online stores, point-in-time correctness | Feature definitions, point-in-time joins |
 | [[Data Drift and Concept Drift]] | Distribution shift detection, handling | KS test, retraining |
-| [[Model Monitoring in Production]] | Dashboards, SLAs, alerts, ground truth | Real-time tracking |
+| [[Model Monitoring in Production]] | Four-layer framework, worked incident, delayed ground truth, drift taxonomy, alert design | Infrastructure/Data/Model/Business |
 | [[Online vs Offline Evaluation]] | A/B testing, shadow, canary, hybrid | Production validation |
-| [[Model Versioning and Reproducibility]] | Git, MLflow, experiment tracking | Reproducible ML |
-| [[Deployment Strategies]] | Blue-green, canary, shadow, A/B | Safe rollouts |
+| [[Model Versioning and Reproducibility]] | Git, MLflow, experiment tracking, model registry | Reproducible ML, registry vs. tracker |
+| [[Deployment Strategies]] | Rolling, blue-green, canary, shadow, A/B, worked canary example | Safe rollouts |
 | [[Retraining and Model Maintenance]] | Cold/warm start, triggers, workflow | Keeping models fresh |
 
 ---
@@ -59,7 +60,7 @@ Canary strategy: (1) Shadow test (no real traffic). (2) Canary 5% (monitor for b
 
 ## Study Order
 
-**2-hour:** All 6 files
+**2-hour:** All 7 files
 **Practice:** 5 Q&A per file
 
 ---
@@ -68,6 +69,7 @@ Canary strategy: (1) Shadow test (no real traffic). (2) Canary 5% (monitor for b
 
 | File | Summary |
 |------|---------|
+| Feature Stores | One feature definition serves both training and inference, preventing training-serving skew; point-in-time joins prevent leakage into training data |
 | 18.1 | Data/concept drift degrade model performance; detect via KS test, handle via retraining |
 | 18.2 | Monitor accuracy, latency, data quality daily; alert on SLA breach; use proxy metrics for delayed labels |
 | 18.3 | Offline fast/cheap but incomplete; online A/B test measures real impact but slower; use both |
@@ -78,4 +80,4 @@ Canary strategy: (1) Shadow test (no real traffic). (2) Canary 5% (monitor for b
 ---
 
 **Total Study Time:** 3-4 hours (deep dive)
-**Interview Readiness:** 85% after 3 files, 95% after all 6
+**Interview Readiness:** 85% after 4 files, 95% after all 7
