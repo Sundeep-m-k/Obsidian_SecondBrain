@@ -19,7 +19,91 @@ Always pick $\arg\max$ of the distribution — here, `"sat"` (0.751). **Fully de
 
 **When this is the right choice**: code generation, structured data extraction, factual short-answer Q&A, anything where consistency and reproducibility matter more than variety — and, practically, anywhere a bug report needs to be reproducible.
 
-**The failure mode worth naming**: greedy decoding is provably *not* the same as finding the highest-probability *entire sequence* — greedily picking the best next token at every step can lock in an early choice that forecloses a better overall continuation (a well-known limitation motivating beam search, which tracks several candidate sequences in parallel rather than committing to one token at a time — outside this note's scope, but worth knowing the term exists).
+**The failure mode worth naming**: greedy decoding is provably *not* the same as finding the highest-probability *entire sequence* — greedily picking the best next token at every step can lock in an early choice that forecloses a better overall continuation. This is exactly the limitation **beam search**, covered next, was invented to reduce.
+
+## Beam Search
+
+Greedy decoding commits to one token per step and never reconsiders. **Beam search** instead tracks the $k$ (the **beam width**) most promising *entire sequences so far* at every step, expands each of them by one token, and keeps only the best $k$ resulting sequences — trading more compute for a better chance of finding a high-probability full sequence than greedy's single-path search allows.
+
+### Mechanism
+
+1. Start from the current sequence(s) held in the beam (initially just the prompt).
+2. For each of the $k$ beams, compute the next-token distribution and consider extending it by every vocabulary token.
+3. Score each resulting candidate sequence by its **cumulative sequence probability** — the product of every token's conditional probability so far, $P(\text{seq}) = \prod_t P(w_t \mid w_{<t})$.
+4. Keep only the top $k$ candidate sequences by this score (**pruning**) — discard the rest, regardless of which beam they came from.
+5. Repeat, extending the surviving $k$ sequences, until each has emitted an end-of-sequence (**EOS**) token or a maximum length is reached.
+6. A beam that emits EOS is **completed** and set aside (no longer expanded); once all $k$ beams are completed (or the max length is hit), return the completed sequence with the best final score.
+
+### Why Scores Are Accumulated in Log-Probability Space
+
+Multiplying many probabilities together (each $\le 1$) underflows to numerically indistinguishable-from-zero after enough steps — a real floating-point problem, not just a style preference. Taking logs converts the product into a **sum**, $\log P(\text{seq}) = \sum_t \log P(w_t\mid w_{<t})$, which is numerically stable and, since $\log$ is monotonically increasing, preserves the same ranking as the raw probabilities would.
+
+### Worked Numerical Example
+
+Vocabulary `{A, B, C, EOS}`, **beam width $k=2$**. All probabilities below are illustrative (not from a real model) but the arithmetic is exact — computed as joint probabilities, then converted to $\log$ (natural log) at the end for verification.
+
+**Step 1** — first-token distribution: $P(A){=}0.40,\ P(B){=}0.40,\ P(C){=}0.15,\ P(\text{EOS}){=}0.05$. Top $k{=}2$: **A** and **B** survive (tied at 0.40; C and EOS are pruned). $\log P(\text{"A"}) = \log P(\text{"B"}) = \ln(0.40) \approx -0.916$.
+
+**Step 2** — expand both beams. Conditional distributions (illustrative): given "A": $P(B{\mid}A){=}0.5,\ P(\text{EOS}{\mid}A){=}0.3,\ P(C{\mid}A){=}0.2$; given "B" (symmetric): $P(A{\mid}B){=}0.5,\ P(\text{EOS}{\mid}B){=}0.3,\ P(C{\mid}B){=}0.2$.
+
+| Candidate | Joint probability | $\log P$ |
+|---|---|---|
+| "A B" | $0.40{\times}0.5=0.20$ | $-1.609$ |
+| "A EOS" | $0.40{\times}0.3=0.12$ | $-2.120$ |
+| "A C" | $0.40{\times}0.2=0.08$ | $-2.526$ |
+| "B A" | $0.40{\times}0.5=0.20$ | $-1.609$ |
+| "B EOS" | $0.40{\times}0.3=0.12$ | $-2.120$ |
+| "B C" | $0.40{\times}0.2=0.08$ | $-2.526$ |
+
+Six candidates generated (2 beams × 3 vocab extensions each — EOS/A/B/C minus repeats), **pruned to the top $k{=}2$**: "A B" and "B A" (both 0.20) survive; the other four are discarded — a concrete instance of step 4's pruning, and note that *both* surviving beams came from extending with a non-EOS token, since 0.20 beat every EOS-terminated candidate at this step.
+
+**Step 3** — expand the two survivors. Conditional distributions (illustrative, again symmetric): given "A B": $P(\text{EOS}{\mid}AB){=}0.6,\ P(C{\mid}AB){=}0.25,\ P(A{\mid}AB){=}0.15$; given "B A" (symmetric): same three probabilities over EOS/C/B.
+
+| Candidate | Joint probability | $\log P$ |
+|---|---|---|
+| "A B EOS" | $0.20{\times}0.6=0.12$ | $-2.120$ |
+| "A B C" | $0.20{\times}0.25=0.05$ | $-2.996$ |
+| "A B A" | $0.20{\times}0.15=0.03$ | $-3.507$ |
+| "B A EOS" | $0.20{\times}0.6=0.12$ | $-2.120$ |
+| "B A C" | $0.20{\times}0.25=0.05$ | $-2.996$ |
+| "B A B" | $0.20{\times}0.15=0.03$ | $-3.507$ |
+
+Top $k{=}2$: **"A B EOS"** and **"B A EOS"** (both $0.12$) — both surviving beams happen to terminate at this step. Both are now **completed**; with no active beams left to expand, decoding stops here. **Final selection**: tied at $\log P = -2.120$ — either "A B" or "B A" (EOS stripped) is a valid final output; a real system breaks the tie deterministically (e.g. earliest-found, or vocabulary order).
+
+This trace demonstrates every mechanism at once: cumulative scoring (multiplying joint probabilities / summing log-probabilities), pruning six candidates down to two at each step regardless of which parent beam produced them, and EOS ending a beam's expansion rather than the whole search.
+
+### Length Bias, and Why Beam Search Often Prefers Shorter Sequences
+
+Every additional token multiplies the sequence's joint probability by another factor $\le 1$ — so, **all else equal, a shorter completed sequence needs fewer such multiplications and tends to retain a higher raw cumulative probability than a longer one**, even when the longer sequence is actually higher-quality on a per-token basis. Concretely, compare two hypothetical completed beams:
+
+- **Hypothesis 1** (short, 2 tokens, mediocre per-token confidence: 0.3, then 0.5): joint $= 0.15$, $\log P \approx -1.897$.
+- **Hypothesis 2** (longer, 4 tokens, strong per-token confidence: 0.6 each): joint $= 0.6^4 = 0.1296$, $\log P \approx -2.043$.
+
+**Raw score** ranks Hypothesis 1 higher ($-1.897 > -2.043$) purely because it's shorter — despite Hypothesis 2 being the more confident sequence at every single step. **Length normalization** fixes this by dividing by sequence length (or length raised to a tunable exponent $\alpha \approx 0.6$–$0.7$ in some implementations) before comparing:
+
+$$\text{normalized score} = \frac{\log P(\text{seq})}{\text{length}}$$
+
+Hypothesis 1 normalized: $-1.897/2 = -0.949$. Hypothesis 2 normalized: $-2.043/4 = -0.511$. **The ranking flips** — Hypothesis 2 now wins ($-0.511 > -0.949$), correctly reflecting that it was the more confident sequence per token, once sequence length stops being an unfair thumb on the scale.
+
+### Complexity
+
+Beam width $k$ multiplies both compute and memory relative to greedy decoding ($k{=}1$): at every step, $k$ beams are each expanded across the full vocabulary, scored, and pruned back down to $k$ — roughly $O(k)$ times the forward-pass and bookkeeping cost of greedy per generation step, and $O(k)$ times the memory to hold the active hypotheses (and their [[Transformer End-to-End Walkthrough|KV caches]], one per beam) simultaneously. Doubling beam width roughly doubles both cost and memory — a real, direct latency/quality tradeoff for a production system, not a free quality upgrade.
+
+**Is a larger beam always better?** No — beyond a fairly small width (commonly 4–10 in practice), returns diminish quickly and can even reverse: larger beams have been empirically observed to sometimes produce *worse* output on open-ended generation (more generic, less coherent) even though they're searching a strictly larger space for the highest-scoring sequence — evidence that "highest probability" and "best output, as judged by a person" are related but not identical objectives.
+
+### Beam Search Is Not Universally "Better" Than Sampling
+
+Beam search searches for the single highest-scoring sequence — which is exactly the right objective for tasks with one (or a narrow band of) correct-ish answers: **machine translation**, **structured sequence generation**, and **summarization** in settings where faithfulness to the source matters more than variety. It is a poor fit for **open-ended conversational generation**, where the training distribution has many valid continuations and always picking the single most probable path tends to produce **generic, repetitive, or bland text** — sampling-based decoding (temperature/top-p) is generally preferred there specifically *because* it preserves the diversity beam search's search-for-the-best-single-answer objective suppresses. Neither is "better" in general — the right choice depends on whether the task has a narrow target (favors beam search) or a wide space of acceptable outputs (favors sampling).
+
+### Comparing All Five Decoding Strategies
+
+| | Deterministic? | Diversity | Compute cost | Memory cost | Typical use case |
+|---|---|---|---|---|---|
+| Greedy | Yes | None | Baseline ($k{=}1$) | Baseline | Code gen, structured extraction, anywhere reproducibility matters most |
+| Beam search | Yes (for a fixed beam width) | Low — actively searches for one best sequence | $O(k)\times$ greedy | $O(k)\times$ greedy | Machine translation, summarization, other narrow-target sequence generation |
+| Temperature sampling | No | Tunable via $T$ | Same as greedy | Same as greedy | General-purpose generation, tuned for the task |
+| Top-k sampling | No | Bounded by fixed $k$ | Same as greedy | Same as greedy | Creative generation with a hard ceiling on how unlikely a token can be |
+| Top-p sampling | No | Adapts to model confidence | Same as greedy | Same as greedy | Open-ended conversational generation, brainstorming |
 
 ## Temperature
 
@@ -91,6 +175,20 @@ Nucleus $= \{\text{sat, cat, mat}\}$ (3 tokens), renormalized to $[0.784, 0.138,
 
 **A generation system produces oddly repetitive text at very low temperature — why, and what would you change?** Very low (near-zero) temperature makes the model pick its single most likely continuation almost every time, which can trap it in a repetition loop once a repeated phrase becomes locally "most probable" again; raising temperature slightly, or adding a repetition penalty (a separate technique not covered in depth here), typically fixes this.
 
+**What is beam search, and how does it differ from greedy decoding?** Greedy decoding commits to the single best next token at every step and never reconsiders; beam search keeps the top-$k$ highest-scoring *entire sequences* at each step, expanding and re-pruning all of them together, which lets it find a better overall sequence than greedy's single, irrevocable path — at $k{\times}$ the compute and memory cost.
+
+**Beam search vs. top-k sampling — what's the actual difference in objective?** Top-k samples randomly from the $k$ most probable *next tokens* at a single step, aiming for varied, natural-feeling output; beam search deterministically keeps the $k$ most probable *entire sequences so far*, aiming to find the single highest-scoring complete sequence — one is stochastic single-step filtering, the other is deterministic multi-step search.
+
+**Why use log-probabilities instead of raw probabilities when scoring beams?** Multiplying many probabilities (each $\le 1$) underflows to zero in floating point after enough steps; summing log-probabilities is numerically stable and preserves the identical ranking, since $\log$ is monotonically increasing.
+
+**Why does beam search have a length bias?** Every additional token multiplies the cumulative probability by another factor $\le 1$, so shorter sequences need fewer such multiplications and mechanically tend to retain higher raw cumulative probability than longer ones, independent of per-token quality — length normalization (dividing by sequence length) corrects for this, as shown in the worked example above where it flips which of two hypotheses ranks higher.
+
+**Is a larger beam width always better?** No — cost and memory scale directly with $k$, and beyond a fairly small width, output quality on open-ended tasks can actually get *worse* (more generic/bland), not better, even though the search is technically covering more of the sequence space.
+
+**Why isn't beam search used for every chatbot response, given that it searches more thoroughly than greedy?** Open-ended conversational generation has many valid continuations, and beam search's objective — find the single highest-probability sequence — tends to produce generic, repetitive text in that setting; sampling-based decoding (temperature/top-p) preserves the diversity a conversational response benefits from, which beam search actively searches away from.
+
+**When would you choose beam search over sampling-based decoding?** When the task has a narrow, well-defined target rather than many acceptable outputs — machine translation, summarization, or other structured sequence generation — where finding the single best-scoring sequence is actually the right objective, unlike open-ended generation.
+
 ## Connections
 
 - [[Transformer End-to-End Walkthrough]] — where these logits come from, and this note's shared worked example
@@ -100,4 +198,4 @@ Nucleus $= \{\text{sat, cat, mat}\}$ (3 tokens), renormalized to $[0.784, 0.138,
 
 ## One-line Summary
 
-> Temperature reshapes the probability distribution before sampling (sharper below $T{=}1$, flatter above), top-k caps candidates by a fixed count, and top-p caps them by cumulative probability mass, adapting to the model's actual confidence — greedy decoding (temperature effectively 0) trades all variety for full reproducibility, which is exactly when it's the right choice.
+> Greedy decoding and beam search are both deterministic sequence-*search* strategies (beam search searching more broadly, at $k\times$ the cost, and needing length normalization to avoid an unfair bias toward shorter sequences); temperature, top-k, and top-p are token-level *sampling* strategies trading determinism for diversity — beam search suits narrow-target tasks like translation, sampling suits open-ended generation, and neither is universally better.
